@@ -4,6 +4,24 @@
 
 # Portable npm and related executables
 
+## Synopsys
+
+Essentially, this is just a set of [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) that manages a `node` docker image. The combination of the shell script and docker image allows commands to run as either the current user or the owner/group of the current directory.
+
+### Installation
+
+Installation is just a matter of putting the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) somewhere in your path. For example, assuming you want the scripts to live in `/usr/local/bin`, run:
+* `sudo wget -nv -O /usr/local/bin/npm https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/npm`
+* `sudo wget -nv -O /usr/local/bin/gulp https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/gulp`
+* `sudo wget -nv -O /usr/local/bin/grunt https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/grunt`
+* Add write permission to let the scripts `self-update` as any user
+** `sudo chmod 0777 /usr/local/bin/npm`
+** `sudo chmod 0777 /usr/local/bin/gulp`
+** `sudo chmod 0777 /usr/local/bin/grunt`
+* `npm self-update` (all of the scripts have a `self-update` command which pulls down the latest docker image and then updates the shell script itself)
+
+## About
+
 This [image](https://hub.docker.com/r/mkenney/npm/) contains the latest `node` and `npm` binaries for [Debian:jessie](https://hub.docker.com/_/debian/). `npm` has been used to install `gulp-cli` and `grunt-cli` globally. When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` in the container and a wrapper script executes `npm` as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
 
 If you need additional modules and/or wrapper scripts (`bower`, etc.) [let me know](https://github.com/mkenney/docker-npm/issues).
