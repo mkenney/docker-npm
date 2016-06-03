@@ -15,9 +15,9 @@ Installation is just a matter of putting the [shell scripts](https://github.com/
 * `sudo wget -nv -O /usr/local/bin/gulp https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/gulp`
 * `sudo wget -nv -O /usr/local/bin/grunt https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/grunt`
 * Add write permission to let the scripts `self-update` as any user
-** `sudo chmod 0777 /usr/local/bin/npm`
-** `sudo chmod 0777 /usr/local/bin/gulp`
-** `sudo chmod 0777 /usr/local/bin/grunt`
+  * `sudo chmod 0777 /usr/local/bin/npm`
+  * `sudo chmod 0777 /usr/local/bin/gulp`
+  * `sudo chmod 0777 /usr/local/bin/grunt`
 * `npm self-update` (all of the scripts have a `self-update` command which pulls down the latest docker image and then updates the shell script itself)
 
 ## About
