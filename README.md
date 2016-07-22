@@ -11,11 +11,23 @@
 
 * [`latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile), [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master) ![Image size](https://img.shields.io/badge/image size-303MB-blue.svg) ![Node.js](https://img.shields.io/badge/Node.js-v6.2.2-026e00.svg) ![npm](https://img.shields.io/badge/npm-v3.10.2-c12127.svg) ![Bower](https://img.shields.io/badge/Bower-v1.7.9-ffcc2f.svg) ![gulp](https://img.shields.io/badge/gulp-v1.2.1-cf4646.svg) ![grunt](https://img.shields.io/badge/Grunt-v1.2.0-e48632.svg)
+  ![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master) 
+  ![Image size](https://img.shields.io/badge/image%20size-303MB-blue.svg) 
+  ![Node.js](https://img.shields.io/badge/Node.js-v6.2.2-026e00.svg) 
+  ![npm](https://img.shields.io/badge/npm-v3.10.2-c12127.svg) 
+  ![Bower](https://img.shields.io/badge/Bower-v1.7.9-ffcc2f.svg) 
+  ![gulp](https://img.shields.io/badge/gulp-v1.2.1-cf4646.svg) 
+  ![grunt](https://img.shields.io/badge/Grunt-v1.2.0-e48632.svg)
 
 * [`alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/alpine/Dockerfile)
 
-  ![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=alpine) ![Image size](https://img.shields.io/badge/image size-56MB-blue.svg) ![Node.js](https://img.shields.io/badge/Node.js-v6.2.2-026e00.svg) ![npm](https://img.shields.io/badge/npm-v3.10.2-c12127.svg) ![Bower](https://img.shields.io/badge/Bower-v1.7.9-ffcc2f.svg) ![gulp](https://img.shields.io/badge/gulp-v1.2.1-cf4646.svg) ![grunt](https://img.shields.io/badge/Grunt-v1.2.0-e48632.svg)
+  ![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=alpine) 
+  ![Image size](https://img.shields.io/badge/image%20size-56MB-blue.svg) 
+  ![Node.js](https://img.shields.io/badge/Node.js-v6.2.2-026e00.svg) 
+  ![npm](https://img.shields.io/badge/npm-v3.10.2-c12127.svg) 
+  ![Bower](https://img.shields.io/badge/Bower-v1.7.9-ffcc2f.svg) 
+  ![gulp](https://img.shields.io/badge/gulp-v1.2.1-cf4646.svg) 
+  ![grunt](https://img.shields.io/badge/Grunt-v1.2.0-e48632.svg)
 
 ## About
 
@@ -23,7 +35,9 @@ Essentially, this is just a set of [shell scripts](https://github.com/mkenney/do
 
 ### Installation
 
-This assumes that you already have [Docker](https://www.docker.com) installed. A running `docker` daemon is required. You probably want to be able to [run docker commands without sudo](https://docs.docker.com/v1.8/installation/ubuntulinux/#create-a-docker-group), but even if you excute the scripts with sudo files will be written with the appropriate `uid` and `gid`.
+This assumes that you already have [Docker](https://www.docker.com) installed. 
+A running `docker` daemon is required. 
+You probably want to be able to [run docker commands without sudo](https://docs.docker.com/v1.8/installation/ubuntulinux/#create-a-docker-group), but even if you excute the scripts with sudo files will be written with the appropriate `uid` and `gid`.
 
 The following wrapper scripts are available in the source repository:
 

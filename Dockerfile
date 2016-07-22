@@ -1,13 +1,13 @@
 FROM node:latest
 
-MAINTAINER Michael Kenney <mkenney@webbedlam.com>
+MAINTAINER geekahertz
 
 ENV PATH /root/bin:$PATH
 ENV NLS_LANG American_America.AL32UTF8
 ENV LANG C.UTF-8
 ENV LANGUAGE C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV TIMEZONE America/Denver
+ENV TIMEZONE America/Toronto
 
 RUN set -x \
     && apt-get -qq update \
@@ -16,11 +16,10 @@ RUN set -x \
     && apt-get -qq dist-upgrade \
     && apt-get install -qqy \
         git \
-        mercurial \
         rsync \
-        subversion \
         sudo \
         wget \
+        nano \
 
     # install npm
     # don't use the package manager, see issue https://github.com/npm/npm/issues/9863
