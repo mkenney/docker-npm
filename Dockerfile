@@ -37,6 +37,12 @@ RUN set -x \
         gulp-cli \
         grunt-cli \
         bower \
+        node-sass \
+        angular \ 
+        jshint-stylish \
+        tsd \ 
+        tslint \
+        generator-hottowel \
 
 ##############################################################################
 # UTF-8 Locale, timezone
