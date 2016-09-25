@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-TAG=latest
-BRANCH=master
+TAG=debian
+BRANCH=debian
 SCRIPT=grunt
 
 if [ "self-update" == "$1" ]; then
