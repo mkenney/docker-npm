@@ -6,6 +6,8 @@ branches:
     only:
         - master
         - debian
+        - 7.0-alpine
+        - 7.0-debian
 
 notifications:
     slack:
@@ -15,10 +17,13 @@ services:
     - docker
 
 before_install:
-    - docker build -t mkenney/npm:ci-build .
-    - cd test
 
 script:
+    # Test the build itself
+    - docker build -t mkenney/npm:ci-build .
+
+    # Test the built image
+    - cd test
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/bower install
     - ls bower_components
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/npm install
@@ -32,6 +37,35 @@ script:
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/gulp
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/generate-md --input ./md --output ./html
     - ls html/index.html
+
+    # Test the installation script and wrapper scripts
+    - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+    - echo "curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s bower ${BRANCH/master/latest} ."
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s bower ${BRANCH/master/latest} .
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s generate-md ${BRANCH/master/latest} .
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s grunt ${BRANCH/master/latest} .
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s gulp ${BRANCH/master/latest} .
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s node ${BRANCH/master/latest} .
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s npm ${BRANCH/master/latest} .
+    - curl -L https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh | bash -s yarn ${BRANCH/master/latest} .
+    - rm -rf bower_components
+    - rm -rf node_modules
+    - ./bower install
+    - ls bower_components
+    - ./npm install
+    - ls node_modules
+    - ./grunt
+    - ./gulp
+    - rm -rf node_modules
+    - ./yarn install
+    - ls node_modules
+    - ./grunt
+    - ./gulp
+    - ./generate-md --input ./md --output ./html
+    - ls html/index.html
+
+    # Output versions
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/bower --version
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/generate-md --version
     - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/grunt --version

@@ -1,6 +1,15 @@
 #!/bin/sh
 
-INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/install-script/bin/install.sh
+BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    if [ "" != "$TRAVIS_BRANCH" ]; then
+        echo $TRAVIS_BRANCH;
+    elif [ "" != "$TRAVIS_PULL_REQUEST_BRANCH" ]; then
+        echo $TRAVIS_PULL_REQUEST_BRANCH;
+    else
+        echo 'master'
+    fi
+fi)
+INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh
 INSTALL_SCRIPT=/tmp/docker-npm-install
 SELF=$0
 COMMAND=$1
@@ -10,7 +19,7 @@ PREFIX=$3
 #
 # Usage
 #
-function usage() {
+function usage {
     if [ "sh" == "$SELF" ]; then
         SELF="sh -s"
     fi
@@ -55,7 +64,7 @@ fi
 # http://www.gnu.org/s/hello/manual/autoconf/Portable-Shell.html
 # Download the master install script and execute it locally
 #
-if [ "|sh|" = "|$0|" ]; then
+if [ "|sh|" = "|$0|" ] || [ "|bash|" = "|$0|" ]; then
 
     #
     # Download the
