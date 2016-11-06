@@ -10,7 +10,7 @@ PREFIX=$3
 #
 # Usage
 #
-usage() {
+function usage {
     if [ "sh" == "$SELF" ]; then
         SELF="sh -s"
     fi
