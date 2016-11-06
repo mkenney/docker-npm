@@ -9,7 +9,7 @@ BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         echo 'master'
     fi
 fi)
-INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/$BRANCH/docker-npm/master/bin/install.sh
+INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/$BRANCH/bin/install.sh
 INSTALL_SCRIPT=/tmp/docker-npm-install
 SELF=$0
 COMMAND=$1
