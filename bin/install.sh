@@ -1,6 +1,15 @@
 #!/bin/sh
 
-INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
+BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    if [ "" != "$TRAVIS_BRANCH" ]; then
+        echo $TRAVIS_BRANCH;
+    elif [ "" != "$TRAVIS_PULL_REQUEST_BRANCH" ]; then
+        echo $TRAVIS_PULL_REQUEST_BRANCH;
+    else
+        echo 'master'
+    fi
+fi)
+INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/$BRANCH/docker-npm/master/bin/install.sh
 INSTALL_SCRIPT=/tmp/docker-npm-install
 SELF=$0
 COMMAND=$1
