@@ -1,6 +1,6 @@
 #!/bin/sh
 
-INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/install-script/bin/install.sh
+INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
 INSTALL_SCRIPT=/tmp/docker-npm-install
 SELF=$0
 COMMAND=$1
