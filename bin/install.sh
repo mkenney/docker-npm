@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
 INSTALL_SCRIPT=/tmp/docker-npm-install
@@ -10,9 +10,9 @@ PREFIX=$3
 #
 # Usage
 #
-function usage() {
-    if [ "bash" == "$SELF" ]; then
-        SELF="bash -s"
+function usage {
+    if [ "sh" == "$SELF" ]; then
+        SELF="sh -s"
     fi
 
     echo "
@@ -28,8 +28,8 @@ function usage() {
         PREFIX   - Optional, the location to install the command script. Default '\$HOME/bin'
 
     Examples
-        $ curl -L $INSTALL_SCRIPT_URL | bash -s gulp 7.0-debian \$HOME/bin
-        $ bash ./install.sh gulp 7.0-debian \$HOME/bin"
+        $ curl -L $INSTALL_SCRIPT_URL | sh -s gulp 7.0-debian \$HOME/bin
+        $ sh ./install.sh gulp 7.0-debian \$HOME/bin"
 }
 
 #
@@ -51,7 +51,7 @@ if [ "" == "$PREFIX" ]; then
 fi
 
 #
-# Based on https://npmjs.org/install.sh, run as `curl | bash`
+# Based on https://npmjs.org/install.sh, run as `curl | sh`
 # http://www.gnu.org/s/hello/manual/autoconf/Portable-Shell.html
 # Download the master install script and execute it locally
 #
@@ -80,7 +80,7 @@ if [ "|sh|" = "|$0|" ] || [ "|bash|" = "|$0|" ]; then
         exit $exit_code
     fi
 
-    bash $INSTALL_SCRIPT.sh $@
+    sh $INSTALL_SCRIPT.sh $@
     exit_code=$?
     rm -f $INSTALL_SCRIPT.sh
     exit $exit_code
