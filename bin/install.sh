@@ -55,7 +55,7 @@ fi
 # http://www.gnu.org/s/hello/manual/autoconf/Portable-Shell.html
 # Download the master install script and execute it locally
 #
-if [ "|sh|" = "|$0|" ]; then
+if [ "|sh|" = "|$0|" ] || [ "|bash|" = "|$0|" ]; then
 
     #
     # Download the
