@@ -1,12 +1,17 @@
 #!/bin/bash
 
+CMD=$project_path/bin/generate-md
+if [ "" != "$1" ]; then
+    CMD=docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/generate-md
+fi
+
 PREFIX="        "
 project_path=$(dirname `pwd`)
 
 cd $project_path/test/resources
 rm -rf html
 
-output=$($project_path/bin/generate-md --input md --output html > /dev/null 2>&1)
+output=$($CMD --input md --output html > /dev/null 2>&1)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then

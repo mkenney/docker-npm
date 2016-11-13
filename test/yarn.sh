@@ -1,12 +1,17 @@
 #!/bin/bash
 
+CMD=$project_path/bin/yarn
+if [ "" != "$1" ]; then
+    CMD=docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/yarn
+fi
+
 PREFIX="        "
 project_path=$(dirname `pwd`)
 
 cd $project_path/test/resources
 rm -rf node_modules
 
-output=$($project_path/bin/yarn install)
+output=$($CMD install)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then

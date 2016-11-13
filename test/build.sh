@@ -16,13 +16,13 @@ if [ 0 -ne $result ]; then
 fi
 
 cd $project_path/test
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/node        --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests node";  fi;
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/bower       --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests bower"; fi;
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/npm         --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests npm";   fi;
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/yarn        --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests yarn";  fi;
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/generate-md --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests md";    fi;
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/grunt       --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests grunt"; fi;
-output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/gulp        --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests gulp";  fi;
+output=$(sh ./node.sh $TAG);  result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests node";  fi;
+output=$(sh ./bower.sh $TAG); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests bower"; fi;
+output=$(sh ./npm.sh $TAG);   result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests npm";   fi;
+output=$(sh ./yarn.sh $TAG);  result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests yarn";  fi;
+output=$(sh ./md.sh $TAG);    result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests md";    fi;
+output=$(sh ./grunt.sh $TAG); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests grunt"; fi;
+output=$(sh ./gulp.sh $TAG);  result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests gulp";  fi;
 
 if [ 0 -ne $build_result ]; then
     echo "${PREFIX}Build tests failed: $failed_tests"

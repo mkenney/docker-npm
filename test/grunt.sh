@@ -1,13 +1,17 @@
 #!/bin/bash
 
+CMD=$project_path/bin/grunt
+if [ "" != "$1" ]; then
+    CMD=docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/grunt
+fi
+
 PREFIX="        "
 project_path=$(dirname `pwd`)
 
 cd $project_path/test/resources
 rm -rf node_modules
 
-$project_path/bin/npm install > /dev/null 2>&1
-output=$($project_path/bin/grunt)
+output=$($CMD)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then

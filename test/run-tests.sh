@@ -14,7 +14,7 @@ get_test_suite() {
         Dockerfile|test/build.sh|release)
             echo "build;install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
-        .travis.yml|test/run-tests.sh)
+        .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
             echo "install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
         bin/bower|test/bower.sh|test/resources/bower.json)
