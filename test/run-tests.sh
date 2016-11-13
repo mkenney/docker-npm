@@ -122,6 +122,7 @@ echo "
 Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
 git diff --name-only origin/$PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
 "
+ls -laF ..
 git diff --name-only origin/$PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
 exit
 
