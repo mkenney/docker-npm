@@ -26,4 +26,5 @@ output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /us
 output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/grunt --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests grunt" fi;
 output=$(docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$TAG /run-as-user /usr/local/bin/gulp  --version); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests gulp"  fi;
 
+echo "Failed tests: $failed_tests"
 exit $build_result
