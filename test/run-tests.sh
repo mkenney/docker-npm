@@ -120,10 +120,9 @@ execute_tests() {
 #
 echo "
 Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
-git diff --name-only . -- origin/$PARENT_BRANCH
+git diff --name-only origin/$PARENT_BRANCH origin/$CURRENT_BRANCH
 "
-pwd
-git diff --name-only . -- origin/$PARENT_BRANCH
+git diff --name-only origin/$PARENT_BRANCH origin/$CURRENT_BRANCH
 exit
 
 run_tests=
