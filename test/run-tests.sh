@@ -128,6 +128,10 @@ if [ "true" == "$TRAVIS" ]; then
 fi
 
 echo "
+git status"
+git status
+
+echo "
 git checkout -b working"
 git checkout -b working
 
