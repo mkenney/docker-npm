@@ -119,7 +119,7 @@ execute_tests() {
 #
 #
 echo "
-Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
+Analyzing changes: $CURRENT_BRANCH <=> $PARENT_BRANCH
 "
 
 if [ "true" == "$TRAVIS" ]; then
@@ -128,41 +128,8 @@ if [ "true" == "$TRAVIS" ]; then
 fi
 
 echo "
-git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD $PARENT_BRANCH)"
-git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD $PARENT_BRANCH)
-
-echo "
-git status"
-git status
-
-echo "
-git checkout -b working"
-git checkout -b working
-
-echo "
-git checkout origin/$PARENT_BRANCH"
-git checkout origin/$PARENT_BRANCH
-
-echo "
-git pull"
-git pull
-
-echo "
-git checkout -b comparing"
-git checkout -b comparing
-
-echo "
-git checkout working"
-git checkout working
-
-echo "
-git diff --name-only comparing"
-git diff --name-only comparing
-
-echo "
-git diff --name-status origin/debian"
-git diff --name-status origin/debian
-
+git diff --name-only HEAD^"
+git diff --name-only HEAD^
 exit 1
 
 run_tests=
