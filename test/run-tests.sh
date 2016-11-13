@@ -126,7 +126,7 @@ if [ "" != "$1" ]; then
     add_test $1
 else
     test_found=0
-    for file in $(git diff --name-only $PARENT_BRANCH $CURRENT_BRANCH); do
+    for file in $(git diff --name-only origin/$PARENT_BRANCH $CURRENT_BRANCH); do
         add_test $file
         test_found=1
     done
