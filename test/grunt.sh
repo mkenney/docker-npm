@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CMD=$project_path/bin/grunt
+CMD="$project_path/bin/grunt"
 if [ "" != "$1" ]; then
-    CMD=docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/grunt
+    CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/grunt"
 fi
 
 PREFIX="        "

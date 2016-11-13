@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CMD=$project_path/bin/yarn
+CMD="$project_path/bin/yarn"
 if [ "" != "$1" ]; then
-    CMD=docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/yarn
+    CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/yarn"
 fi
 
 PREFIX="        "

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-CMD=$project_path/bin/gulp
+CMD="$project_path/bin/gulp"
 if [ "" != "$1" ]; then
-    CMD=docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/gulp
+    CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/gulp"
 fi
 
 PREFIX="        "
@@ -15,6 +15,6 @@ output=$($CMD)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: 'gulp'"
+    echo "${PREFIX}command failed: '$CMD'"
 fi
 exit $result
