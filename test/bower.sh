@@ -11,7 +11,7 @@ echo "CMD: $CMD"
 cd $PROJECT_PATH/test/resources
 rm -rf bower_components
 
-output=$($CMD install)
+output=`$CMD install`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -19,7 +19,7 @@ if [ 0 -ne $result ]; then
     exit $result
 fi
 
-output=$(ls bower_components)
+output=`ls bower_components`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then

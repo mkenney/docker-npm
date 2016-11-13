@@ -16,7 +16,7 @@ rm -rf node_modules
 echo "$NPM install"
 $NPM install
 
-output=$($CMD)
+output=`$CMD`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
