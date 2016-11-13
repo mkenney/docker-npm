@@ -24,7 +24,7 @@ script:
 
     # Test the built image
     - cd test
-    - sh ./node.sh > /dev/null 2>&1 # This should make it pull
+#    - sh ./node.sh > /dev/null 2>&1 # This should make it pull
     - ./run-tests.sh
 #    - docker run --rm -t -i -v $(pwd):/src:rw mkenney/npm:ci-build /run-as-user /usr/local/bin/bower install
 #    - ls bower_components
