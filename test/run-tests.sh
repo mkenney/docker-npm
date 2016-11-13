@@ -122,7 +122,8 @@ echo "
 Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
 git diff --name-only origin/$PARENT_BRANCH origin/$CURRENT_BRANCH
 "
-git diff --name-only origin/$PARENT_BRANCH origin/$CURRENT_BRANCH
+ls -laF ..
+git diff --name-only origin/$PARENT_BRANCH --
 exit
 
 run_tests=
