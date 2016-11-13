@@ -121,25 +121,41 @@ execute_tests() {
 echo "
 Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
 "
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-git log
-ls -laF ..
-echo "git checkout -b working"
+
+if [ "true" == "$TRAVIS" ]; then
+    git config --global user.email "you@example.com"
+    git config --global user.name "travis-ci"
+fi
+
+echo "
+git checkout -b working"
 git checkout -b working
-echo "git checkout origin/$PARENT_BRANCH"
+
+echo "
+git checkout origin/$PARENT_BRANCH"
 git checkout origin/$PARENT_BRANCH
-echo "git pull"
+
+echo "
+git pull"
 git pull
-echo "git checkout -b comparing"
+
+echo "
+git checkout -b comparing"
 git checkout -b comparing
-echo "git checkout working"
+
+echo "
+git checkout working"
 git checkout working
-echo "git diff --name-only comparing"
+
+echo "
+git diff --name-only comparing"
 git diff --name-only comparing
-echo "git diff --name-status origin/debian"
+
+echo "
+git diff --name-status origin/debian"
 git diff --name-status origin/debian
-exit
+
+exit 1
 
 run_tests=
 if [ "" != "$1" ]; then
