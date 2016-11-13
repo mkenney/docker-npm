@@ -1,12 +1,12 @@
 #!/bin/bash
 
+PREFIX="        "
+project_path=$(dirname `pwd`)
+
 CMD="$project_path/bin/grunt"
 if [ "" != "$1" ]; then
     CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/grunt"
 fi
-
-PREFIX="        "
-project_path=$(dirname `pwd`)
 
 cd $project_path/test/resources
 rm -rf node_modules
