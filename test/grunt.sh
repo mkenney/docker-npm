@@ -16,7 +16,7 @@ rm -rf node_modules
 echo "PWD: `pwd`"
 echo "LS: `ls -laF`"
 echo "$NPM install"
-$NPM install
+echo `$NPM install`
 
 output=`$CMD`
 result=$?
