@@ -128,9 +128,40 @@ if [ "true" == "$TRAVIS" ]; then
 fi
 
 echo "
-git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)"
-git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)
+git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD $PARENT_BRANCH)"
+git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD $PARENT_BRANCH)
 
+echo "
+git status"
+git status
+
+echo "
+git checkout -b working"
+git checkout -b working
+
+echo "
+git checkout origin/$PARENT_BRANCH"
+git checkout origin/$PARENT_BRANCH
+
+echo "
+git pull"
+git pull
+
+echo "
+git checkout -b comparing"
+git checkout -b comparing
+
+echo "
+git checkout working"
+git checkout working
+
+echo "
+git diff --name-only comparing"
+git diff --name-only comparing
+
+echo "
+git diff --name-status origin/debian"
+git diff --name-status origin/debian
 
 exit 1
 
