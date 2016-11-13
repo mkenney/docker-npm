@@ -122,22 +122,12 @@ echo "
 Analyzing changes: $CURRENT_BRANCH <=> $PARENT_BRANCH
 "
 
-if [ "true" == "$TRAVIS" ]; then
-    git config --global user.email "you@example.com"
-    git config --global user.name "travis-ci"
-fi
-
-echo "
-git diff --name-only HEAD^"
-git diff --name-only HEAD^
-exit 1
-
 run_tests=
 if [ "" != "$1" ]; then
     add_test $1
 else
     test_found=0
-    for file in $(git diff --name-only origin/$PARENT_BRANCH $CURRENT_BRANCH); do
+    for file in $(git diff --name-only HEAD^); do
         add_test $file
         test_found=1
     done
