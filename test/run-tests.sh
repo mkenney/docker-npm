@@ -123,6 +123,7 @@ Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
 "
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
+git log
 ls -laF ..
 echo "git checkout -b working"
 git checkout -b working
