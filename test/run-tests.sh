@@ -120,13 +120,14 @@ execute_tests() {
 #
 echo "
 Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
-git diff --name-only origin/$PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
+git diff --name-only $PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
 "
 ls -laF ..
+git checkout -b working
 git checkout $PARENT_BRANCH
 git pull
 git checkout $TRAVIS_PULL_REQUEST_SHA
-git diff --name-only origin/$PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
+git diff --name-only $PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
 exit
 
 run_tests=
