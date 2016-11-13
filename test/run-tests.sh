@@ -126,8 +126,9 @@ ls -laF ..
 git checkout -b working
 git checkout $PARENT_BRANCH
 git pull
-git checkout $TRAVIS_PULL_REQUEST_SHA
-git diff --name-only $PARENT_BRANCH $TRAVIS_PULL_REQUEST_SHA
+git checkout -b comparing
+git checkout working
+git diff --name-only comparing
 exit
 
 run_tests=
