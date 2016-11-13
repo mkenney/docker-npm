@@ -21,6 +21,9 @@ result=$?
 echo $output
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD': $output"
+    echo "PWD:"
     echo `pwd`
+    echo "LS:"
+    echo `ls -laF`
 fi
 exit $result
