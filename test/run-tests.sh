@@ -120,10 +120,11 @@ execute_tests() {
 #
 echo "
 Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
-git diff --name-only origin/$PARENT_BRANCH $CURRENT_BRANCH
+git diff --name-only origin/$PARENT_BRANCH
 "
-git diff --name-only origin/$PARENT_BRANCH $CURRENT_BRANCH
-exit;
+git diff --name-only origin/$PARENT_BRANCH
+exit
+
 run_tests=
 if [ "" != "$1" ]; then
     add_test $1
