@@ -4,7 +4,7 @@ PREFIX="        "
 
 CMD="$PROJECT_PATH/bin/bower"
 if [ "" != "$1" ]; then
-    CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/bower"
+    CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/bower"
 fi
 echo "CMD: $CMD"
 
@@ -19,7 +19,7 @@ if [ 0 -ne $result ]; then
     exit $result
 fi
 
-output=`ls bower_components`
+output=ls bower_components`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
