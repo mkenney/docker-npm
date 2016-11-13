@@ -19,7 +19,7 @@ if [ 0 -ne $result ]; then
     exit $result
 fi
 
-output=ls bower_components`
+output=`ls bower_components`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
