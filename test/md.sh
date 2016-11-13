@@ -15,7 +15,7 @@ output=$($CMD --input md --output html > /dev/null 2>&1)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: 'generate-md'"
+    echo "${PREFIX}command failed: '$CMD'"
     exit $result
 fi
 

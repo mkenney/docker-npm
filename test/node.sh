@@ -15,6 +15,6 @@ output=$($CMD --version)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: 'node --version'"
+    echo "${PREFIX}command failed: '$CMD --version'"
 fi
 exit $result

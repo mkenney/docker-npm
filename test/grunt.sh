@@ -13,10 +13,10 @@ echo "CMD: $CMD"
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules && $NPM install
 
-output=$($CMD)
+output=`$CMD`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: 'grunt'"
+    echo "${PREFIX}command failed: '$CMD'"
 fi
 exit $result

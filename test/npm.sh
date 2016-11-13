@@ -15,7 +15,7 @@ output=$($CMD install)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: 'npm install'"
+    echo "${PREFIX}command failed: '$CMD install'"
     exit $result
 fi
 
