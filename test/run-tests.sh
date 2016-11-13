@@ -12,18 +12,20 @@ declare -a TESTS=()
 # Get the current and parent branch names
 # based on https://gist.github.com/intel352/9761288#gistcomment-1774649
 #
+export CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 vbc_col=$(( $(git show-branch | grep '^[^\[]*\*' | head -1 | cut -d* -f1 | wc -c) - 1 ))
 swimming_lane_start_row=$(( $(git show-branch | grep -n "^[\-]*$" | cut -d: -f1) + 1 ))
-export CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 export PARENT_BRANCH=`git show-branch | tail -n +$swimming_lane_start_row | grep -v "^[^\[]*\[$CURRENT_BRANCH" | grep "^.\{$vbc_col\}[^ ]" | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'`
 if [ "" == "$PARENT_BRANCH" ]; then PARENT_BRANCH=master; fi
+echo $PARENT_BRANCH
+exit
 
 get_test_suite() {
     case $1 in
-        Dockerfile|test/build.sh|all)
+        Dockerfile|test/build.sh|release)
             echo "build;install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
-        test/run-tests.sh)
+        .travis.yml|test/run-tests.sh)
             echo "install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
         bin/bower|test/bower.sh|test/resources/bower.json)
@@ -134,12 +136,14 @@ run_tests=
 if [ "" != "$1" ]; then
     add_test $1
 else
+    test_found=0
     for file in $(git diff --name-only $PARENT_BRANCH $CURRENT_BRANCH); do
         add_test $file
+        test_found=1
     done
 fi
-if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ]; then
-    add_test all
+if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ]; then
+    add_test release
 fi
 
 execute_tests $verbose
