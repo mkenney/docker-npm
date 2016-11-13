@@ -3,7 +3,7 @@
 
 
 # Test execution method
-source $(dirname `pwd`)/test/assert.sh
+source $(dirname `pwd`)/test/lib/assert.sh
 
 # List of tests to execute
 declare -a TESTS=()
@@ -17,6 +17,11 @@ vbc_col=$(( $(git show-branch | grep '^[^\[]*\*' | head -1 | cut -d* -f1 | wc -c
 swimming_lane_start_row=$(( $(git show-branch | grep -n "^[\-]*$" | cut -d: -f1) + 1 ))
 export PARENT_BRANCH=`git show-branch | tail -n +$swimming_lane_start_row | grep -v "^[^\[]*\[$CURRENT_BRANCH" | grep "^.\{$vbc_col\}[^ ]" | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'`
 if [ "" == "$PARENT_BRANCH" ]; then PARENT_BRANCH=master; fi
+
+echo "
+travis branch: $TRAVIS_BRANCH
+"
+exit
 
 get_test_suite() {
     case $1 in
