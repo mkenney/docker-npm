@@ -9,12 +9,6 @@ source $(dirname `pwd`)/test/lib/assert.sh
 # List of tests to execute
 declare -a TESTS=()
 
-echo "
-travis branch: $TRAVIS_BRANCH
-"
-env | grep TRAVIS
-exit
-
 get_test_suite() {
     case $1 in
         Dockerfile|test/build.sh|release)
