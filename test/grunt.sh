@@ -11,7 +11,10 @@ fi
 echo "CMD: $CMD"
 
 cd $PROJECT_PATH/test/resources
-rm -rf node_modules && $NPM install
+echo "rm -rf node_modules"
+rm -rf node_modules
+echo "$NPM install"
+$NPM install
 
 output=`$CMD`
 result=$?
