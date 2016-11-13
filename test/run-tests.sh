@@ -21,6 +21,7 @@ if [ "" == "$PARENT_BRANCH" ]; then PARENT_BRANCH=master; fi
 echo "
 travis branch: $TRAVIS_BRANCH
 "
+env | grep TRAVIS
 exit
 
 get_test_suite() {
