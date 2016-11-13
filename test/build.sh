@@ -2,11 +2,10 @@
 
 PREFIX="        "
 TAG=ci-build
-project_path=$(dirname `pwd`)
 build_result=0
 failed_tests=
 
-cd $project_path
+cd $PROJECT_PATH
 docker build -t mkenney/npm:$TAG .
 result=$?
 echo $output
@@ -15,7 +14,7 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests docker-build"
 fi
 
-cd $project_path/test
+cd $PROJECT_PATH/test
 output=$(sh ./node.sh $TAG);  result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests node";  fi;
 output=$(sh ./bower.sh $TAG); result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests bower"; fi;
 output=$(sh ./npm.sh $TAG);   result=$?; echo $output; if [ 0 -ne $result ]; then build_result=1; failed_tests="$failed_tests npm";   fi;

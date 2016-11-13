@@ -1,14 +1,13 @@
 #!/bin/bash
 
 PREFIX="        "
-project_path=$(dirname `pwd`)
 
-CMD="$project_path/bin/node"
+CMD="$PROJECT_PATH/bin/node"
 if [ "" != "$1" ]; then
     CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/node"
 fi
 
-cd $project_path/test/resources
+cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 
 output=$($CMD --version)

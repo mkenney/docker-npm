@@ -1,10 +1,11 @@
 #!/bin/bash
 
+export PROJECT_PATH=$(dirname `pwd`)
 
 
 # Test execution method
-source $(dirname `pwd`)/test/lib/travis.sh
-source $(dirname `pwd`)/test/lib/assert.sh
+source $PROJECT_PATH/test/lib/travis.sh
+source $PROJECT_PATH/test/lib/assert.sh
 
 # List of tests to execute
 declare -a TESTS=()
@@ -139,12 +140,12 @@ fi
 execute_tests $verbose
 
 echo "
-  bower --version:       $($(dirname `pwd`)/bin/bower --version)
-  generate-md --version: $($(dirname `pwd`)/bin/generate-md --version)
-  grunt --version:       $($(dirname `pwd`)/bin/grunt --version)
-  gulp --version:        $($(dirname `pwd`)/bin/gulp --version)
-  node --version:        $($(dirname `pwd`)/bin/node --version)
-  npm --version:         $($(dirname `pwd`)/bin/npm --version)
-  yarn --version:        $($(dirname `pwd`)/bin/yarn --version)
+  bower --version:       $($PROJECT_PATH/bin/bower --version)
+  generate-md --version: $($PROJECT_PATH/bin/generate-md --version)
+  grunt --version:       $($PROJECT_PATH/bin/grunt --version)
+  gulp --version:        $($PROJECT_PATH/bin/gulp --version)
+  node --version:        $($PROJECT_PATH/bin/node --version)
+  npm --version:         $($PROJECT_PATH/bin/npm --version)
+  yarn --version:        $($PROJECT_PATH/bin/yarn --version)
 "
 exit $exit_code

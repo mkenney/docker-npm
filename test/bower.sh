@@ -1,14 +1,13 @@
 #!/bin/bash
 
 PREFIX="        "
-project_path=$(dirname `pwd`)
 
-CMD="$project_path/bin/bower"
+CMD="$PROJECT_PATH/bin/bower"
 if [ "" != "$1" ]; then
     CMD="docker run --rm -ti -v $(pwd):/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/bower"
 fi
 
-cd $project_path/test/resources
+cd $PROJECT_PATH/test/resources
 rm -rf bower_components
 
 output=$($CMD install)

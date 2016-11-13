@@ -1,6 +1,5 @@
 #!/bin/bash
 
-PROJECT_PATH=$(dirname `pwd`)/test
 INSTALL_PATH=bin
 PREFIX="        "
 
@@ -28,9 +27,9 @@ function test_install {
     echo "${PREFIX}Testing $script $tag"
 
     # Test local
-    rm -f $PROJECT_PATH/$path/$script
+    rm -f $PROJECT_PATH/test/$path/$script
     echo "${PREFIX}    bash install.sh $script $tag $path"
-    output=$(bash $(dirname `pwd`)/bin/install.sh $script $tag $PROJECT_PATH/$path)
+    output=$(bash $(dirname `pwd`)/bin/install.sh $script $tag $PROJECT_PATH/test/$path)
     result=$?
     if [ "0" != "$result" ] || [ "" == "$(echo "$output" | grep -i "installation succeeded")" ]; then
         echo $output
@@ -39,9 +38,9 @@ function test_install {
     test_script $script; result=$?; if [ "0" != "$result" ]; then exit $result; fi
 
     # Test cat
-    rm -f $PROJECT_PATH/$path/$script
+    rm -f $PROJECT_PATH/test/$path/$script
     echo "${PREFIX}    cat install.sh | bash -s $script $tag $path"
-    output=$(cat $(dirname `pwd`)/bin/install.sh | bash -s $script $tag $PROJECT_PATH/$path)
+    output=$(cat $(dirname `pwd`)/bin/install.sh | bash -s $script $tag $PROJECT_PATH/test/$path)
     result=$?
     if [ "0" != "$result" ] || [ "" == "$(echo "$output" | grep -i "installation succeeded")" ]; then
         echo $output
@@ -50,9 +49,9 @@ function test_install {
     test_script $script; result=$?; if [ "0" != "$result" ]; then exit $result; fi
 
     # Test remote
-    rm -f $PROJECT_PATH/$path/$script
+    rm -f $PROJECT_PATH/test/$path/$script
     echo "${PREFIX}    curl install.sh | bash -s $script $tag $path"
-    output=$(curl -f -L -s https://raw.githubusercontent.com/mkenney/docker-npm/$CURRENT_BRANCH/bin/install.sh | bash -s $script $tag $PROJECT_PATH/$path)
+    output=$(curl -f -L -s https://raw.githubusercontent.com/mkenney/docker-npm/$CURRENT_BRANCH/bin/install.sh | bash -s $script $tag $PROJECT_PATH/test/$path)
     result=$?
     if [ "0" != "$result" ] || [ "" == "$(echo "$output" | grep -i "installation succeeded")" ]; then
         echo $output
