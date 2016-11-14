@@ -21,7 +21,7 @@ before_install:
 script:
     - cd test
     - sh ./node.sh > /dev/null 2>&1 # This should make it pull
-    - travis_wait 30 ./run-tests.sh
+    - travis_wait 60 ./run-tests.sh
 
 after_success:
     - cd ../ci
