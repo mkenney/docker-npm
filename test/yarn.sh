@@ -11,15 +11,15 @@ echo "CMD: $CMD"
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 
-output=$($CMD install)
+output=`$CMD install`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: '$CMD install': $output"
+    echo "${PREFIX}command failed: '$CMD install'"
     exit $result
 fi
 
-output=$(ls node_modules)
+output=`ls node_modules`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then

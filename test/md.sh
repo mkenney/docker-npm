@@ -6,20 +6,19 @@ CMD="$PROJECT_PATH/bin/generate-md"
 if [ "" != "$1" ]; then
     CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/generate-md"
 fi
-echo "CMD: $CMD"
 
 cd $PROJECT_PATH/test/resources
 rm -rf html
 
-output=$($CMD --input md --output html > /dev/null 2>&1)
+output=`$CMD --input md --output html > /dev/null 2>&1`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: '$CMD': $output"
+    echo "${PREFIX}command failed: '$CMD'"
     exit $result
 fi
 
-output=$(ls $PROJECT_PATH/test/resources/html)
+output=`ls $PROJECT_PATH/test/resources/html`
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
