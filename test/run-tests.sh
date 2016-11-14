@@ -115,6 +115,7 @@ execute_tests() {
         fi
     done
 }
+sh ./node.sh > /dev/null 2>&1 # This should make it pull
 
 #
 #
