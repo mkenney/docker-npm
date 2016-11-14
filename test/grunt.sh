@@ -11,7 +11,7 @@ fi
 
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules
-`$NPM install`
+$NPM install
 
 output=`$CMD`
 result=$?
