@@ -1,16 +1,22 @@
 #!/bin/bash
 
 PREFIX="        "
-project_path=$(dirname `pwd`)
 
-cd $project_path/test/resources
-rm -rf node_modules
-
-$project_path/bin/npm install > /dev/null 2>&1
-output=$($project_path/bin/grunt)
-result=$?
-echo $output
-if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: 'grunt'"
+CMD="$PROJECT_PATH/bin/grunt"
+NPM="$PROJECT_PATH/bin/npm"
+if [ "" != "$1" ]; then
+    CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/grunt"
+    NPM="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/npm"
 fi
-exit $result
+
+cd $PROJECT_PATH/test/resources
+rm -rf node_modules
+$NPM install
+
+output=`$CMD`
+result=$?
+if [ 0 -ne $result ]; then
+    echo "${PREFIX}command failed: '$CMD'"
+    echo $output
+    exit $result
+fi

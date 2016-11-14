@@ -1,29 +1,21 @@
 #!/bin/bash
 
+export PROJECT_PATH=$(dirname `pwd`)
 
 
 # Test execution method
-source $(dirname `pwd`)/test/assert.sh
+source $PROJECT_PATH/test/lib/travis.sh
+source $PROJECT_PATH/test/lib/assert.sh
 
 # List of tests to execute
 declare -a TESTS=()
 
-#
-# Get the current and parent branch names
-# based on https://gist.github.com/intel352/9761288#gistcomment-1774649
-#
-vbc_col=$(( $(git show-branch | grep '^[^\[]*\*' | head -1 | cut -d* -f1 | wc -c) - 1 ))
-swimming_lane_start_row=$(( $(git show-branch | grep -n "^[\-]*$" | cut -d: -f1) + 1 ))
-export CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
-export PARENT_BRANCH=`git show-branch | tail -n +$swimming_lane_start_row | grep -v "^[^\[]*\[$CURRENT_BRANCH" | grep "^.\{$vbc_col\}[^ ]" | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'`
-if [ "" == "$PARENT_BRANCH" ]; then PARENT_BRANCH=master; fi
-
 get_test_suite() {
     case $1 in
-        Dockerfile|test/build.sh|all)
+        Dockerfile|test/build.sh|release)
             echo "build;install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
-        test/run-tests.sh)
+        .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
             echo "install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
         bin/bower|test/bower.sh|test/resources/bower.json)
@@ -106,6 +98,7 @@ execute_tests() {
     for test in "${!TESTS[@]}"; do
         printf "    - ${TESTS[test]}... "
         if [ "build" == "${TESTS[test]}" ]; then
+            test_result=
             bash "${TESTS[test]}.sh"
         else
             test_result=$(assert "${TESTS[test]}.sh" 0)
@@ -117,40 +110,44 @@ execute_tests() {
         else
             echo "success"
         fi
-        if [ "-v" == "$1" ] || [ 0 -ne $result ]; then
+        if [ "-v" == "$1" ] || [ 0 -ne $result ] || [ "build" == "${TESTS[test]}" ]; then
             echo "$test_result"
             echo
         fi
     done
 }
+sh ./node.sh > /dev/null 2>&1 # This should make it pull
 
 #
 #
 #
 echo "
-Analyzing changes: $PARENT_BRANCH <=> $CURRENT_BRANCH
+Analyzing changes: $CURRENT_BRANCH <=> $PARENT_BRANCH
 "
+
 run_tests=
 if [ "" != "$1" ]; then
     add_test $1
 else
-    for file in $(git diff --name-only $PARENT_BRANCH $CURRENT_BRANCH); do
+    test_found=0
+    for file in $(git diff --name-only HEAD^); do
         add_test $file
+        test_found=1
     done
 fi
-if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ]; then
-    add_test all
+if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ]; then
+    add_test release
 fi
 
 execute_tests $verbose
 
 echo "
-  bower --version:       $($(dirname `pwd`)/bin/bower --version)
-  generate-md --version: $($(dirname `pwd`)/bin/generate-md --version)
-  grunt --version:       $($(dirname `pwd`)/bin/grunt --version)
-  gulp --version:        $($(dirname `pwd`)/bin/gulp --version)
-  node --version:        $($(dirname `pwd`)/bin/node --version)
-  npm --version:         $($(dirname `pwd`)/bin/npm --version)
-  yarn --version:        $($(dirname `pwd`)/bin/yarn --version)
+  bower --version:       $($PROJECT_PATH/bin/bower --version)
+  generate-md --version: $($PROJECT_PATH/bin/generate-md --version)
+  grunt --version:       $($PROJECT_PATH/bin/grunt --version)
+  gulp --version:        $($PROJECT_PATH/bin/gulp --version)
+  node --version:        $($PROJECT_PATH/bin/node --version)
+  npm --version:         $($PROJECT_PATH/bin/npm --version)
+  yarn --version:        $($PROJECT_PATH/bin/yarn --version)
 "
 exit $exit_code
