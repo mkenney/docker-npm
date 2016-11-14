@@ -98,7 +98,7 @@ execute_tests() {
     for test in "${!TESTS[@]}"; do
         printf "    - ${TESTS[test]}... "
         if [ "build" == "${TESTS[test]}" ]; then
-            bash "${TESTS[test]}.sh"
+            test_result=`bash "${TESTS[test]}.sh"`
         else
             test_result=$(assert "${TESTS[test]}.sh" 0)
         fi
