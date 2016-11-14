@@ -15,8 +15,8 @@ $NPM install
 
 output=`$CMD`
 result=$?
-echo $output
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: '$CMD': $output"
+    echo "${PREFIX}command failed: '$CMD'"
+    echo $output
+    exit $result
 fi
-exit $result

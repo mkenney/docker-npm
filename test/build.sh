@@ -8,7 +8,6 @@ failed_tests=
 cd $PROJECT_PATH
 docker build -t mkenney/npm:$TAG .
 result=$?
-echo $output
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests docker-build"

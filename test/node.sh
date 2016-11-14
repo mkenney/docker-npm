@@ -12,8 +12,8 @@ rm -rf node_modules
 
 output=`$CMD --version`
 result=$?
-echo $output
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD --version'"
+    echo $output
+    exit $result
 fi
-exit $result

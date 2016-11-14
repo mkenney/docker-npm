@@ -20,9 +20,9 @@ fi
 
 output=`ls bower_components`
 result=$?
-echo $output
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: 'ls bower_components'"
+    echo $output
     exit $result
 fi
 

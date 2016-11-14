@@ -13,17 +13,16 @@ rm -rf node_modules
 
 output=`$CMD install`
 result=$?
-echo $output
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD install'"
+    echo $output
     exit $result
 fi
 
 output=`ls node_modules`
 result=$?
-echo $output
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: 'ls node_modules'"
+    echo $output
+    exit $result
 fi
-
-exit $result
