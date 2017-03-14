@@ -24,6 +24,7 @@ RUN set -x \
         wget \
 
     # install npm packages
+    && rm -f /usr/local/bin/yarn \
     && npm install --silent -g \
         gulp-cli \
         grunt-cli \
