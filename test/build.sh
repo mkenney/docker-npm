@@ -6,7 +6,7 @@ build_result=0
 failed_tests=
 
 cd $PROJECT_PATH
-docker build -t mkenney/npm:$TAG .
+docker build --no-cache -t mkenney/npm:$TAG .
 result=$?
 if [ 0 -ne $result ]; then
     build_result=1
