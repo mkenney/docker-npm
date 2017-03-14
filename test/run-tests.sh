@@ -13,7 +13,7 @@ declare -a TESTS=()
 get_test_suite() {
     case $1 in
         Dockerfile|test/build.sh|release)
-            echo "build;install;bower;md;grunt;gulp;node;npm;yarn"
+            echo "1.build;install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
         .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
             echo "install;bower;md;grunt;gulp;node;npm;yarn"
@@ -94,10 +94,10 @@ add_test() {
 exit_code=0
 execute_tests() {
     echo "
-  Executing tests..."
+  Executing tests... $TESTS"
     for test in "${!TESTS[@]}"; do
         printf "    - ${TESTS[test]}... "
-        if [ "build" == "${TESTS[test]}" ]; then
+        if [ "1.build" == "${TESTS[test]}" ]; then
             test_result=
             bash "${TESTS[test]}.sh"
         else
@@ -110,7 +110,7 @@ execute_tests() {
         else
             echo "success"
         fi
-        if [ "-v" == "$1" ] || [ 0 -ne $result ] || [ "build" == "${TESTS[test]}" ]; then
+        if [ "-v" == "$1" ] || [ 0 -ne $result ] || [ "1.build" == "${TESTS[test]}" ]; then
             echo "$test_result"
             echo
         fi
