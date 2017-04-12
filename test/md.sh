@@ -6,7 +6,7 @@ CMD="$PROJECT_PATH/bin/generate-md"
 if [ "" != "$1" ]; then
     CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/generate-md"
 else
-    $CMD self-update
+    eval "$CMD self-update"
 fi
 
 cd $PROJECT_PATH/test/resources
