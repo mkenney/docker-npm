@@ -91,6 +91,26 @@ Examples
 
 ### Change log
 
+#### 2017-04-12
+
+Added support for specifying the user and group ids you want to run your container commands to the `/run-as-user` script via `docker run` execution: https://github.com/mkenney/docker-scripts/pull/1/files
+
+To use this behavior, you can pass `PUID` and `PGID` environment variables when you execute the container:
+
+```bash
+  docker run \
+      --rm \
+      -ti \
+      -v $(pwd):/src:rw \
+      -e "PUID=<user id>" \
+      -e "PGID=<group id>" \
+      mkenney/npm:latest <npm commands>
+```
+
+Also added support for using the `/run-as-user` script as an entrypoint and updated this `Dockerfile` to use it as an entrypoint, hopefully simplifying and clairifying `docker run` statements. This should not be a breaking change for any scripts that were taking of the `CMD` behavior. https://github.com/mkenney/docker-scripts/pull/2/files
+
+Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have any problems.
+
 #### 2016-11-13
 
 * Created "stable" branches for node v6.9 images

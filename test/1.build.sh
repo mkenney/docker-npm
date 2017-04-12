@@ -63,7 +63,7 @@ if [ 0 -ne $result ]; then
 fi;
 
 output=`sh ./gulp.sh $TAG`
-result=$?;
+result=$?
 echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
