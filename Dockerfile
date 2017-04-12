@@ -32,6 +32,10 @@ RUN set -x \
         markdown-styles \
         yarn \
 
+    # Restore a borne-shell compatible default shell
+    && rm /bin/sh \
+    && ln -s /bin/bash /bin/sh
+
 ##############################################################################
 # UTF-8 Locale, timezone
 ##############################################################################
