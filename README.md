@@ -104,7 +104,7 @@ To use this behavior, you can pass `PUID` and `PGID` environment variables when 
       -v $(pwd):/src:rw \
       -e "PUID=<user id>" \
       -e "PGID=<group id>" \
-      mkenney/npm:latest <npm commands>
+      mkenney/npm:latest <commands>
 ```
 
 Also added support for using the `/run-as-user` script as an entrypoint and updated this `Dockerfile` to use it as an entrypoint, hopefully simplifying and clairifying `docker run` statements. This should not be a breaking change for any scripts that were taking of the `CMD` behavior. https://github.com/mkenney/docker-scripts/pull/2/files
