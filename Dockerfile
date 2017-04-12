@@ -34,7 +34,7 @@ RUN set -x \
 
     # Restore a borne-shell compatible default shell
     && rm /bin/sh \
-    && ln -s /bin/bash /bin/sh
+    && ln -s /bin/bash /bin/sh \
 
 ##############################################################################
 # UTF-8 Locale, timezone
