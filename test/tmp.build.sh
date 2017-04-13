@@ -6,7 +6,7 @@ build_result=0
 failed_tests=
 
 cd $PROJECT_PATH
-docker build --no-cache -t mkenney/npm:$TAG .
+docker build -t mkenney/npm:$TAG .
 result=$?
 if [ 0 -ne $result ]; then
     build_result=1
@@ -15,60 +15,56 @@ fi
 cd $PROJECT_PATH/test
 
 output=`sh ./node.sh $TAG`
-result=$?
-echo $output
+result=$?;
+echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests node"
 fi;
 
 output=`sh ./bower.sh $TAG`
-result=$?
-echo $output
+result=$?;
+echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests bower";
 fi;
 
 output=`sh ./npm.sh $TAG`
-result=$?
-echo $output
+result=$?;
+echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests npm";
 fi;
 
 output=`sh ./yarn.sh $TAG`
-result=$?
-echo $output
+result=$?;
+echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests yarn"
 fi;
 
 output=`sh ./md.sh $TAG`
-result=$?
-echo $output
+result=$?;
+echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests md";
 fi;
 
 output=`sh ./grunt.sh $TAG`
-result=$?
-echo $output
+result=$?;
+echo $output;
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests grunt";
 fi;
 
 output=`sh ./gulp.sh $TAG`
-result=$?
-<<<<<<< HEAD:test/1.build.sh
+result=$?;
 echo $output;
-=======
-echo $output
->>>>>>> alpine-update-tests:test/1.build.sh
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests gulp"
