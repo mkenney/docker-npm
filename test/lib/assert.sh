@@ -1,10 +1,9 @@
 #!/bin/bash
 
 function assert {
+    script=$1
 
 exit 0
-
-    script=$1
 
     expected=0
     if [ "" != "$2" ]; then
