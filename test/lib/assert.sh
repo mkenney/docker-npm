@@ -1,24 +1,19 @@
 #!/bin/bash
 
 function assert {
-echo "start assert"
+
+exit 0
 
     script=$1
 
     expected=0
-echo "pre-error"
-    #if [ -z $2 ]; then
-    #    expected=$2
-    #fi
-echo "post-error"
-echo "script: $(dirname `pwd`)/test/$script"
+    if [ "" != "$2" ]; then
+        expected=$2
+    fi
 
     #
     bash $(dirname `pwd`)/test/$script;
     result=$?
-echo "result: $result"
     echo "        expected: $expected, result: $result"
-
-echo "end assert"
     exit $result
 }
