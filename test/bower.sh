@@ -3,6 +3,7 @@
 PREFIX="        "
 CMD="$PROJECT_PATH/bin/bower"
 
+ls -laF /bin/bash
 if [ "" != "$1" ]
 then
     CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/bower"
