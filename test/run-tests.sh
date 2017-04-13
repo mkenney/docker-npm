@@ -101,7 +101,9 @@ execute_tests() {
             test_result=
             bash "${TESTS[test]}.sh"
         else
+echo "start"
             test_result=$(assert "${TESTS[test]}.sh" 0)
+echo "end"
         fi
         result=$?
         if [ 0 -ne $result ]; then
