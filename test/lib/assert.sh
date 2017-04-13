@@ -4,11 +4,11 @@ function assert {
     script=$1
 
     expected=0
-exit 0
 
     if [ "" != "$2" ]; then
         expected=$2
     fi
+exit 1
 
     #
     bash $(dirname `pwd`)/test/$script;
