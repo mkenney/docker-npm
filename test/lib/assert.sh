@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function assert {
+echo "start"
+
     script=$1
 
     expected=0
@@ -13,4 +15,6 @@ function assert {
     result=$?
     echo "        expected: $expected, result: $result"
     exit $result
+
+echo "end"
 }
