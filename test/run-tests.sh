@@ -100,14 +100,10 @@ execute_tests() {
         if [ "1.build" == "${TESTS[test]}" ]; then
             test_result=
             bash "${TESTS[test]}.sh"
-            result=$?
         else
-echo "************** start"
             test_result=$(assert "${TESTS[test]}.sh" 0)
-            result=$?
-echo " --- $test_result"
-echo "************** end"
         fi
+        result=$?
         if [ 0 -ne $result ]; then
             echo "failure (#$result)"
             exit_code=1
@@ -138,9 +134,9 @@ else
         add_test $file
         test_found=1
     done
-    if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
-        add_test release
-    fi
+fi
+if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
+    add_test release
 fi
 
 execute_tests $verbose
