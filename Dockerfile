@@ -121,4 +121,5 @@ RUN set -x \
 VOLUME /src
 WORKDIR /src
 
-CMD ["/run-as-user", "/usr/local/bin/npm"]
+ENTRYPOINT ["/run-as-user"]
+CMD ["/usr/local/bin/npm"]
