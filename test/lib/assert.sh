@@ -7,9 +7,9 @@ echo "start assert"
 
     expected=0
 echo "pre-error"
-    if [ -z $2 ]; then
-        expected=$2
-    fi
+    #if [ -z $2 ]; then
+    #    expected=$2
+    #fi
 echo "post-error"
 echo "script: $(dirname `pwd`)/test/$script"
 

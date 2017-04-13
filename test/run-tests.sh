@@ -103,8 +103,8 @@ execute_tests() {
         else
 echo "************** start"
             test_result=$(assert "${TESTS[test]}.sh" 0)
-echo "************** end
- --- $test_result"
+echo " --- $test_result"
+echo "************** end"
         fi
         result=$?
         if [ 0 -ne $result ]; then
