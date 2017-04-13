@@ -101,9 +101,9 @@ execute_tests() {
             test_result=
             bash "${TESTS[test]}.sh"
         else
-echo "start"
+echo "************** start"
             test_result=$(assert "${TESTS[test]}.sh" 0)
-echo "end
+echo "************** end
  --- $test_result"
         fi
         result=$?
