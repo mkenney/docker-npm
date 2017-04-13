@@ -100,13 +100,14 @@ execute_tests() {
         if [ "1.build" == "${TESTS[test]}" ]; then
             test_result=
             bash "${TESTS[test]}.sh"
+            result=$?
         else
 echo "************** start"
             test_result=$(assert "${TESTS[test]}.sh" 0)
+            result=$?
 echo " --- $test_result"
 echo "************** end"
         fi
-        result=$?
         if [ 0 -ne $result ]; then
             echo "failure (#$result)"
             exit_code=1
