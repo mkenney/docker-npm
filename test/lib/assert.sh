@@ -11,8 +11,8 @@ function assert {
 
     #
 echo bash $(dirname `pwd`)/test/$script
-    bash $(dirname `pwd`)/test/$script
 exit 1
+    bash $(dirname `pwd`)/test/$script
     result=$?
     echo "        expected: $expected, result: $result"
     exit $result
