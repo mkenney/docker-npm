@@ -18,27 +18,27 @@ In order to keep them small and lightweight, the `alpine` based images do not in
 
 * [`latest`, `alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image size-117MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
+  ![Image size](https://img.shields.io/badge/image%20size-117MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
 
 * [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image size-302MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  ![Image size](https://img.shields.io/badge/image%20size-302MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-alpine/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image size-117MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
+  ![Image size](https://img.shields.io/badge/image%20size-117MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
 
 * [`7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-debian/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image size-239MB-blue.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
+  ![Image size](https://img.shields.io/badge/image%20size-239MB-blue.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
 
 * [`6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-alpine/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image size-115MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
+  ![Image size](https://img.shields.io/badge/image%20size-115MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
 * [`6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-debian/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image size-234MB-blue.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
+  ![Image size](https://img.shields.io/badge/image%20size-234MB-blue.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
 ### About
 
@@ -90,6 +90,26 @@ Examples
   Each of the scripts have a `self-update` command which pulls down the latest docker image (which all the scripts share) and then updates the shell script itself. If you don't have write permissions on the shell script you'll get a permissions error, you can run the self-update command with `sudo` if necessary.
 
 ### Change log
+
+#### 2017-04-12
+
+Added support for specifying the user and group ids you want to run your container commands to the `/run-as-user` script via `docker run` execution: https://github.com/mkenney/docker-scripts/pull/1/files
+
+To use this behavior, you can pass `PUID` and `PGID` environment variables when you execute the container:
+
+```bash
+  docker run \
+      --rm \
+      -ti \
+      -v $(pwd):/src:rw \
+      -e "PUID=<user id>" \
+      -e "PGID=<group id>" \
+      mkenney/npm:latest <commands>
+```
+
+Also added support for using the `/run-as-user` script as an entrypoint and updated this `Dockerfile` to use it as an entrypoint, hopefully simplifying and clairifying `docker run` statements. This should not be a breaking change for any scripts that were taking of the `CMD` behavior. https://github.com/mkenney/docker-scripts/pull/2/files
+
+Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have any problems.
 
 #### 2016-11-13
 
