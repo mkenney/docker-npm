@@ -134,9 +134,9 @@ else
         add_test $file
         test_found=1
     done
-fi
-if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
-    add_test release
+    if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
+        add_test release
+    fi
 fi
 
 execute_tests $verbose

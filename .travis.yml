@@ -22,7 +22,7 @@ before_install:
 
 script:
     - cd test
-    - ./run-tests.sh
+    - ./run-tests.sh bin/bower
 
 after_success:
     - cd ../ci
