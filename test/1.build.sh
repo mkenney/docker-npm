@@ -64,11 +64,7 @@ fi;
 
 output=`sh ./gulp.sh $TAG`
 result=$?
-<<<<<<< HEAD:test/1.build.sh
-echo $output;
-=======
 echo $output
->>>>>>> alpine-update-tests:test/1.build.sh
 if [ 0 -ne $result ]; then
     build_result=1
     failed_tests="$failed_tests gulp"
