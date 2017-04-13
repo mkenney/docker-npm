@@ -10,7 +10,8 @@ function assert {
     fi
 
     #
-    bash $(dirname `pwd`)/test/$script;
+echo bash $(dirname `pwd`)/test/$script
+    bash $(dirname `pwd`)/test/$script
 exit 1
     result=$?
     echo "        expected: $expected, result: $result"
