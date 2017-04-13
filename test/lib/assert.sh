@@ -1,7 +1,6 @@
 #!/bin/bash
 
 function assert {
-echo "start assert"
 
     script=$1
 
@@ -9,6 +8,7 @@ echo "start assert"
     if [ "" != "$2" ]; then
         expected=$2
     fi
+echo "start assert"
 
     #
     bash $(dirname `pwd`)/test/$script;
