@@ -10,9 +10,6 @@ ENV NLS_LANG American_America.AL32UTF8
 ENV TIMEZONE America/Denver
 ENV TERM xterm
 
-ENV NODE_VERSION v7.7.2
-ENV NODE_PREFIX /usr/local
-
 RUN set -x \
     && apt-get -qq update \
     && apt-get install -qqy apt-utils \
