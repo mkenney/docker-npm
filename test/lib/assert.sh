@@ -6,7 +6,7 @@ echo "start assert"
     script=$1
 
     expected=0
-    if [ "" != $2 ]; then
+    if [ -z $2 ]; then
         expected=$2
     fi
 
