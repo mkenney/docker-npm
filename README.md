@@ -14,35 +14,33 @@
 
 ### Tagged Dockerfiles
 
-In order to keep them small and lightweight, the `alpine` based images do not include build tools like `make`, `gcc`, `g++` and the like, so some packages that require them like `node-sass` or `node-gyp` won't work out of the box. However, the more robust `debian` based images do include those tools and should meet those needs.
-
 * [`latest`, `alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-117MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
+  ![Image size](https://img.shields.io/badge/image%20size-124MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
 
 * [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-302MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  ![Image size](https://img.shields.io/badge/image%20size-308MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-alpine/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-117MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
+  ![Image size](https://img.shields.io/badge/image%20size-124MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
 
 * [`7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-debian/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-239MB-blue.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
+  ![Image size](https://img.shields.io/badge/image%20size-266MB-blue.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
 
 * [`6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-alpine/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-115MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
+  ![Image size](https://img.shields.io/badge/image%20size-122MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
 * [`6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-debian/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-234MB-blue.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
+  ![Image size](https://img.shields.io/badge/image%20size-254MB-blue.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
 ### About
 
-Essentially, this is just a set of [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) that manage a [Node.js](https://nodejs.org/) docker image. The docker image includes a script ([`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container)) that allows commands to run as either the current user or the owner/group of the current directory, which the shell scripts take advantage of to make sure files are written with appropriate permissions rather than root.
+Essentially, this is just a set of [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) that manage a [Node.js](https://nodejs.org/) docker image. The docker image includes a script ([`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container)) that allows commands to run as either the current user or the owner/group of the current directory, which the shell scripts take advantage of to make sure files are written with your preferred permissions rather than root.
 
 #### Images
 
@@ -107,7 +105,7 @@ To use this behavior, you can pass `PUID` and `PGID` environment variables when 
       mkenney/npm:latest <commands>
 ```
 
-Also added support for using the `/run-as-user` script as an entrypoint and updated this `Dockerfile` to use it as an entrypoint, hopefully simplifying and clairifying `docker run` statements. This should not be a breaking change for any scripts that were taking of the `CMD` behavior. https://github.com/mkenney/docker-scripts/pull/2/files
+Also added support for using the `/run-as-user` script as an entrypoint and updated this `Dockerfile` to use it as an entrypoint, hopefully simplifying and clairifying `docker run` statements. This should not be a breaking change for any scripts that were taking advantage of the `CMD` behavior. https://github.com/mkenney/docker-scripts/pull/2/files
 
 Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have any problems.
 
