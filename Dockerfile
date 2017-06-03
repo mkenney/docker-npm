@@ -8,7 +8,7 @@ ENV LANGUAGE C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV TIMEZONE America/Denver
 
-ENV NODE_VERSION v7.7.2
+ENV NODE_VERSION v7.7.4
 ENV NODE_PREFIX /usr/local
 
 RUN set -x \
@@ -33,26 +33,14 @@ RUN set -x \
         shadow \
         subversion \
         sudo \
-        tar \
-
-##############################################################################
-# users
-##############################################################################
-
-    # Create a dev user to use as the directory owner
-    && addgroup dev \
-    && adduser -D -s /bin/sh -G dev dev \
-    && echo "dev:password" | chpasswd \
-
-    # Setup wrapper scripts
-    && curl -o /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
-    && chmod 0755 /run-as-user \
+        tar
 
 ##############################################################################
 # Install Node & NPM
 # Based on https://github.com/mhart/alpine-node/blob/master/Dockerfile (thank you)
 ##############################################################################
 
+RUN set -x \
     # Download and validate the NodeJs source
     && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys \
         9554F04D7259F04124DE6B476D5A82AC7E37093B \
@@ -81,11 +69,12 @@ RUN set -x \
     && paxctl -cm out/Release/mksnapshot \
     && make -j${NPROC} \
     && make install \
-    && paxctl -cm ${NODE_PREFIX}/bin/node \
+    && paxctl -cm ${NODE_PREFIX}/bin/node
 
+RUN set -x \
     # Upgrade npm
     # Don't use npm to self-upgrade, see issue https://github.com/npm/npm/issues/9863
-    && curl -L https://npmjs.org/install.sh | sh \
+    #&& curl -L https://npmjs.org/install.sh | sh \
 
     # Install node packages
     && npm install --silent -g \
@@ -93,12 +82,27 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
+        yarn
+
+##############################################################################
+# users
+##############################################################################
+
+RUN set -x \
+    # Create a dev user to use as the directory owner
+    && addgroup dev \
+    && adduser -D -s /bin/sh -G dev dev \
+    && echo "dev:password" | chpasswd \
+
+    # Setup wrapper scripts
+    && curl -o /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
+    && chmod 0755 /run-as-user
 
 ##############################################################################
 # ~ fin ~
 ##############################################################################
 
+RUN set -x \
     && apk del \
         curl \
         gnupg \
