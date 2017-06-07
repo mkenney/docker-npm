@@ -69,7 +69,7 @@ RUN set -x \
     && echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && rsync -a /root/ /home/dev/ \
     && chown -R dev:dev /home/dev/ \
-    && chmod -R 0777 /home/dev \
+    && chmod 0777 /home/dev \
 
 ##############################################################################
 # ~ fin ~
