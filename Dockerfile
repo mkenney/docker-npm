@@ -71,6 +71,10 @@ RUN set -x \
     && chown -R dev:dev /home/dev/ \
     && chmod 0777 /home/dev \
 
+    # Fix for upstream issues
+    && chmod -R 0777 /home/dev/.config \
+    && chmod -R 0777 /home/dev/.npm \
+
 ##############################################################################
 # ~ fin ~
 ##############################################################################
