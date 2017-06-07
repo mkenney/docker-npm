@@ -69,11 +69,7 @@ RUN set -x \
     && echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && rsync -a /root/ /home/dev/ \
     && chown -R dev:dev /home/dev/ \
-    && chmod 0777 /home/dev \
-
-    # Fix for upstream issues
-    && chmod -R 0777 /home/dev/.config \
-    && chmod -R 0777 /home/dev/.npm \
+    && chmod -R 0777 /home/dev \
 
 ##############################################################################
 # ~ fin ~
