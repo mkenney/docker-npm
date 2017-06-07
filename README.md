@@ -2,7 +2,7 @@
 
 [![dockeri.co](http://dockeri.co/image/mkenney/npm)](https://hub.docker.com/r/mkenney/npm/)
 
-[![MIT License](https://img.shields.io/github/license/mkenney/docker-npm.svg)](https://raw.githubusercontent.com/mkenney/docker-npm/master/LICENSE) [![Github issues](https://img.shields.io/github/issues-raw/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/issues) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm)
+[![MIT License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://raw.githubusercontent.com/mkenney/docker-npm/master/LICENSE) [![Github issues](https://img.shields.io/github/issues-raw/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/issues)
 
 ## Portable `node`, package managers and build tools
 
@@ -16,27 +16,27 @@
 
 * [`latest`, `alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-124MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
+  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
 
 * [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-308MB-blue.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=debian)](https://travis-ci.org/mkenney/docker-npm) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-alpine/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-124MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
+  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:7.0-alpine.svg) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=7.0-alpine)](https://travis-ci.org/mkenney/docker-npm) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
 
 * [`7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-debian/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-266MB-blue.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
+  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:7.0-debian.svg) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=7.0-debian)](https://travis-ci.org/mkenney/docker-npm) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
 
 * [`6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-alpine/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-122MB-blue.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
+  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-alpine.svg) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=6.9-alpine)](https://travis-ci.org/mkenney/docker-npm) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
 * [`6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-debian/Dockerfile)
 
-  ![Image size](https://img.shields.io/badge/image%20size-254MB-blue.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
+  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-debian.svg) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=6.9-debian)](https://travis-ci.org/mkenney/docker-npm) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
 ### About
 
@@ -130,19 +130,19 @@ Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have a
 * Added `travis-ci` tests to test and validate both the installation script and the individual wrapper scripts
   * The install script is using `bash` instead of `sh` because the version of `sh` installed on `travis-ci` would constantly have a syntax error on the `usage` function definition, regardless of how it was defined. Both of these failed:
 
-    ```sh
+```sh
 function usage {
     ...
 }
 ```
 
-      ```sh
+```sh
 usage() {
     ...
 }
 ```
 
-      At some point I'll get that figured out and switch it back to `sh`.
+At some point I'll get that figured out and switch it back to `sh`.
 
 Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have any problems.
 
