@@ -130,13 +130,13 @@ Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have a
 * Added `travis-ci` tests to test and validate both the installation script and the individual wrapper scripts
   * The install script is using `bash` instead of `sh` because the version of `sh` installed on `travis-ci` would constantly have a syntax error on the `usage` function definition, regardless of how it was defined. Both of these failed:
 
-    ```sh
+```sh
 function usage {
     ...
 }
 ```
 
-    ```sh
+```sh
 usage() {
     ...
 }
