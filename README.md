@@ -136,13 +136,13 @@ function usage {
 }
 ```
 
-      ```sh
+    ```sh
 usage() {
     ...
 }
 ```
 
-      At some point I'll get that figured out and switch it back to `sh`.
+At some point I'll get that figured out and switch it back to `sh`.
 
 Please [let me know](https://github.com/mkenney/docker-npm/issues) if you have any problems.
 
