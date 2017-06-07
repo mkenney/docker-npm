@@ -2,7 +2,7 @@
 
 [![dockeri.co](http://dockeri.co/image/mkenney/npm)](https://hub.docker.com/r/mkenney/npm/)
 
-[![MIT License](https://img.shields.io/github/license/mkenney/docker-npm.svg)](https://raw.githubusercontent.com/mkenney/docker-npm/master/LICENSE) [![Github issues](https://img.shields.io/github/issues-raw/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/issues) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm)
+[![MIT License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://raw.githubusercontent.com/mkenney/docker-npm/master/LICENSE) [![Github issues](https://img.shields.io/github/issues-raw/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/issues) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm)
 
 ## Portable `node`, package managers and build tools
 
@@ -16,27 +16,27 @@
 
 * [`latest`, `alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
+  [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm)![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg) This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
 
 * [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=debian)](https://travis-ci.org/mkenney/docker-npm)![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:7.0-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
+  [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=7.0-alpine)](https://travis-ci.org/mkenney/docker-npm)![Layers](https://images.microbadger.com/badges/image/mkenney/npm:7.0-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v7.0 compiled from source.
 
 * [`7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/7.0-debian/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:7.0-debian.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
+  [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=7.0-debian)](https://travis-ci.org/mkenney/docker-npm)![Layers](https://images.microbadger.com/badges/image/mkenney/npm:7.0-debian.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
 
 * [`6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
+  [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=6.9-alpine)](https://travis-ci.org/mkenney/docker-npm)![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
 * [`6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/6.9-debian/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-debian.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
+  [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=6.9-debian)](https://travis-ci.org/mkenney/docker-npm)![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-debian.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
 ### About
 
