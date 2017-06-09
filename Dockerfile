@@ -28,7 +28,6 @@ RUN set -x \
         make \
         mercurial \
         openssh \
-        paxctl \
         python \
         shadow \
         subversion \
@@ -65,16 +64,13 @@ RUN set -x \
     && export GYP_DEFINES="linux_use_gold_flags=0" \
     && ./configure --prefix=${NODE_PREFIX} \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
-    && make -j${NPROC} -C out mksnapshot BUILDTYPE=Release \
-    && paxctl -cm out/Release/mksnapshot \
     && make -j${NPROC} \
     && make install \
-    && paxctl -cm ${NODE_PREFIX}/bin/node
 
-RUN set -x \
     # Upgrade npm
     # Don't use npm to self-upgrade, see issue https://github.com/npm/npm/issues/9863
     #&& curl -L https://npmjs.org/install.sh | sh \
+    && npm install -g npm@latest \
 
     # Install node packages
     && npm install --silent -g \
@@ -107,7 +103,6 @@ RUN set -x \
         curl \
         gnupg \
         linux-headers \
-        paxctl \
         python \
         tar \
 
