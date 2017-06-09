@@ -23,8 +23,11 @@ before_install:
 script:
     - cd test
     - ls -laF
+    - ls -laF ~/
+    - ls -laF ~/.ssh/
     - exit 1
     - ./run-tests.sh
+
 after_success:
     - cd ../ci
     - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh ./deploy.sh; fi
