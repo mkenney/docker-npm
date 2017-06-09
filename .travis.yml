@@ -25,7 +25,6 @@ script:
     - ls -laF
     - ls -laF ~/
     - ls -laF ~/.ssh/
-    - exit 1
     - ./run-tests.sh
 
 after_success:
