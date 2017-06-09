@@ -22,6 +22,8 @@ before_install:
 
 script:
     - cd test
+    - ls -laF
+    - exit 1
     - ./run-tests.sh
 
 after_success:

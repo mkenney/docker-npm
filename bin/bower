@@ -14,5 +14,5 @@ else
     else
         term_type=i
     fi
-    docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:$TAG sudo chown -R $USER:$(id -gn $USER) /home/dev/.config && /run-as-user /usr/local/bin/$SCRIPT --allow-root $@
+    docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:$TAG /run-as-user /usr/local/bin/$SCRIPT --allow-root $@
 fi
