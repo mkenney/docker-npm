@@ -34,12 +34,13 @@ RUN set -x \
 
     # Restore a borne-shell compatible default shell
     && rm /bin/sh \
-    && ln -s /bin/bash /bin/sh \
+    && ln -s /bin/bash /bin/sh
 
 ##############################################################################
 # UTF-8 Locale, timezone
 ##############################################################################
 
+RUN set -x \
     && apt-get install -qqy locales \
     && locale-gen C.UTF-8 ${UTF8_LOCALE} \
     && dpkg-reconfigure locales \
@@ -48,12 +49,13 @@ RUN set -x \
     && export LANGUAGE=C.UTF-8 \
     && export LC_ALL=C.UTF-8 \
     && echo $TIMEZONE > /etc/timezone \
-    && dpkg-reconfigure -f noninteractive tzdata \
+    && dpkg-reconfigure -f noninteractive tzdata
 
 ##############################################################################
 # users
 ##############################################################################
 
+RUN set -x \
     # Configure root account
     && echo "export NLS_LANG=$(echo $NLS_LANG)"                >> /root/.bash_profile \
     && echo "export LANG=$(echo $LANG)"                        >> /root/.bash_profile \
@@ -69,12 +71,13 @@ RUN set -x \
     && echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && rsync -a /root/ /home/dev/ \
     && chown -R dev:dev /home/dev/ \
-    && chmod 0777 /home/dev \
+    && chmod 0777 /home/dev
 
 ##############################################################################
 # ~ fin ~
 ##############################################################################
 
+RUN set -x \
     && wget -O /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
     && chmod 0755 /run-as-user \
 
