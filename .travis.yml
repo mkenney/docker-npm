@@ -22,9 +22,10 @@ before_install:
 
 script:
     - cd test
-    - ls -laF
-    - ls -laF ~/
-    - ls -laF ~/.ssh/
+    - cd resources
+    - /home/travis/build/mkenney/docker-npm/bin/bower --version
+    - /home/travis/build/mkenney/docker-npm/bin/bower install
+    - exit 1
     - ./run-tests.sh
 
 after_success:

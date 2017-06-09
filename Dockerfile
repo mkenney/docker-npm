@@ -80,7 +80,6 @@ RUN set -x \
 RUN set -x \
     && wget -O /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
     && chmod 0755 /run-as-user \
-    && echo '' \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
