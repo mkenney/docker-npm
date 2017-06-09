@@ -23,6 +23,12 @@ before_install:
 script:
     - cd test
     - cd resources
+    - ls -laF /home/dev/.config
+    - docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:debian /run-as-user ls -laF /home/dev
+    - docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:debian /run-as-user ls -laF /home/dev/.config
+    - docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:debian /run-as-user ls -laF /home/dev/.config/configstore/
+    - docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:debian /run-as-user bower --version
+    - docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:debian /run-as-user bower install
     - /home/travis/build/mkenney/docker-npm/bin/bower --version
     - /home/travis/build/mkenney/docker-npm/bin/bower install
     - exit 1
