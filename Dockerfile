@@ -11,9 +11,11 @@ ENV TIMEZONE America/Denver
 ENV TERM xterm
 
 RUN set -x \
-    # the 'node' GID is 1000 which conflicts with common user ids
+    # the 'node' GID is 1000 which conflicts with common user groups
+    && node_id=$(cut -d: -f3 < <(getent group node)) \
     && groupmod -g 200 node \
-    && find / -group 1000 | xargs chgrp node \
+    && find / -group $node_id | xargs chgrp node \
+
     && apt-get -qq update \
     && apt-get install -qqy apt-utils \
     && apt-get -qq upgrade \
