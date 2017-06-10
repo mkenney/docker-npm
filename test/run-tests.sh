@@ -13,10 +13,10 @@ declare -a TESTS=()
 get_test_suite() {
     case $1 in
         Dockerfile|test/build.sh|release)
-            echo "1.build;install;bower;md;grunt;gulp;node;npm;yarn"
+            echo "1.build;bower;md;grunt;gulp;node;npm;yarn"
             ;;
         .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
-            echo "install;bower;md;grunt;gulp;node;npm;yarn"
+            echo "bower;md;grunt;gulp;node;npm;yarn"
             ;;
         bin/bower|test/bower.sh|test/resources/bower.json)
             echo "bower"
@@ -30,9 +30,9 @@ get_test_suite() {
         bin/gulp|test/gulp.sh|test/resources/gulpfile.js)
             echo "gulp"
             ;;
-        bin/install.sh|test/install.sh)
-            echo "install"
-            ;;
+        #bin/install.sh|test/install.sh)
+        #    echo "install"
+        #    ;;
         bin/node|test/node.sh|default)
             echo "node"
             ;;
