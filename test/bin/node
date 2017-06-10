@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+TAG=ci-build
+BRANCH=master
+SCRIPT=node
+INSTALL_SCRIPT=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
+
+if [ "self-update" = "$1" ]; then
+    docker pull mkenney/npm:$TAG
+    curl -f -L -s $INSTALL_SCRIPT | sh -s $SCRIPT $TAG $(dirname $0)
+else
+    if [ -t 0 ]; then
+        term_type=ti
+    else
+        term_type=i
+    fi
+    docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:$TAG /run-as-user /usr/local/bin/$SCRIPT $@
+fi
