@@ -21,6 +21,7 @@ services:
 before_install:
 
 script:
+    - cd test
     - ./run-tests.sh
 
 after_success:
