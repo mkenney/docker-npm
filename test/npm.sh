@@ -2,10 +2,7 @@
 
 PREFIX="        "
 
-CMD="$PROJECT_PATH/test/bin/npm"
-if [ "" != "$1" ]; then
-    CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/npm"
-fi
+CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:ci-build /run-as-user npm"
 
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules

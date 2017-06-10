@@ -2,10 +2,7 @@
 
 PREFIX="        "
 
-CMD="$PROJECT_PATH/test/bin/bower"
-if [ "" != "$1" ]; then
-    CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/bower  --allow-root"
-fi
+CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:ci-build /run-as-user bower --allow-root"
 
 cd $PROJECT_PATH/test/resources
 rm -rf bower_components

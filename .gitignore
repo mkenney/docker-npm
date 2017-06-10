@@ -1,4 +1,5 @@
 test/resources/bower_components
 test/resources/node_modeules
 test/resources/html
+test/bin
 test/**/*.lock
