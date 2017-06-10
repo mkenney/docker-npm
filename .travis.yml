@@ -28,10 +28,9 @@ script:
     - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user cat /etc/group
     - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user bower --version
     - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user bower install
-    - cd test
     - cd resources
-    - /home/travis/build/mkenney/docker-npm/bin/bower --version
-    - /home/travis/build/mkenney/docker-npm/bin/bower install
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user bower --version
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user bower install
     - exit 1
     - cd test
     - ./run-tests.sh
