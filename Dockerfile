@@ -39,6 +39,7 @@ RUN set -x \
         bower \
         markdown-styles \
         yarn \
+    && chown -R node:node /usr/local/lib/node_modules \
 
     # Restore a borne-shell compatible default shell
     && rm /bin/sh \

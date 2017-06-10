@@ -101,7 +101,7 @@ execute_tests() {
             test_result=
             bash "${TESTS[test]}.sh"
         else
-            test_result=$(assert "${TESTS[test]}.sh" 0)
+            test_result=$(assert "${TESTS[test]}.sh")
         fi
         result=$?
         if [ 0 -ne $result ]; then
@@ -141,4 +141,13 @@ fi
 
 execute_tests $verbose
 
+#echo "
+#  bower --version:       $($PROJECT_PATH/test/bin/bower --version)
+#  generate-md --version: $($PROJECT_PATH/test/bin/generate-md --version)
+#  grunt --version:       $($PROJECT_PATH/test/bin/grunt --version)
+#  gulp --version:        $($PROJECT_PATH/test/bin/gulp --version)
+#  node --version:        $($PROJECT_PATH/test/bin/node --version)
+#  npm --version:         $($PROJECT_PATH/test/bin/npm --version)
+#  yarn --version:        $($PROJECT_PATH/test/bin/yarn --version)
+#"
 exit $exit_code
