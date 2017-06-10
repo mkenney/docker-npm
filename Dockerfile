@@ -12,7 +12,7 @@ ENV TERM xterm
 
 RUN set -x \
     # the 'node' GID is 1000 which conflicts with common user groups
-    && node_id=$(cut -d: -f3 < <(getent group node)) \
+    && node_id=$(getent group node | cut -d: -f3) \
     && groupmod -g 200 node \
     && find / -group $node_id | xargs chgrp node \
 
