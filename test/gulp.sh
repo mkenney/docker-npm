@@ -9,7 +9,8 @@ cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 $NPM install
 
-output=`$CMD`
+$CMD
+output=$($CMD)
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD'"
