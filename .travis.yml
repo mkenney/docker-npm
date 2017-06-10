@@ -21,6 +21,18 @@ services:
 before_install:
 
 script:
+    - docker build --no-cache -t mkenney/npm:ci-build .
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user ls -laF /home/dev
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user ls -laF /home/dev/.config
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user ls -laF /home/dev/.config/configstore/
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user cat /etc/group
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user bower --version
+    - docker run --rm -ti -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:ci-build /run-as-user bower install
+    - cd test
+    - cd resources
+    - /home/travis/build/mkenney/docker-npm/bin/bower --version
+    - /home/travis/build/mkenney/docker-npm/bin/bower install
+    - exit 1
     - cd test
     - ./run-tests.sh
 
