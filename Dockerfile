@@ -30,25 +30,7 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn
-
-##############################################################################
-# users
-##############################################################################
-
-RUN set -x \
-    # Create a dev user to use as the directory owner
-    && addgroup dev \
-    && adduser -D -s /bin/sh -G dev dev \
-    && echo "dev:password" | chpasswd \
-
-    # Setup wrapper scripts
-    && curl -o /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
-    && chmod 0755 /run-as-user
-
-    # Restore a borne-shell compatible default shell
-    && rm /bin/sh \
-    && ln -s /bin/bash /bin/sh \
+        yarn \
 
     # Restore a borne-shell compatible default shell
     && rm /bin/sh \
