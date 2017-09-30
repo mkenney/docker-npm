@@ -13,10 +13,10 @@ declare -a TESTS=()
 get_test_suite() {
     case $1 in
         Dockerfile|test/build.sh|release)
-            echo "1.build;install;bower;md;grunt;gulp;node;npm;yarn"
+            echo "1.build;bower;md;grunt;gulp;node;npm;yarn"
             ;;
         .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
-            echo "install;bower;md;grunt;gulp;node;npm;yarn"
+            echo "bower;md;grunt;gulp;node;npm;yarn"
             ;;
         bin/bower|test/bower.sh|test/resources/bower.json)
             echo "bower"
@@ -30,9 +30,9 @@ get_test_suite() {
         bin/gulp|test/gulp.sh|test/resources/gulpfile.js)
             echo "gulp"
             ;;
-        bin/install.sh|test/install.sh)
-            echo "install"
-            ;;
+        #bin/install.sh|test/install.sh)
+        #    echo "install"
+        #    ;;
         bin/node|test/node.sh|default)
             echo "node"
             ;;
@@ -101,7 +101,7 @@ execute_tests() {
             test_result=
             bash "${TESTS[test]}.sh"
         else
-            test_result=$(assert "${TESTS[test]}.sh" 0)
+            test_result=$(assert "${TESTS[test]}.sh")
         fi
         result=$?
         if [ 0 -ne $result ]; then
@@ -141,13 +141,13 @@ fi
 
 execute_tests $verbose
 
-echo "
-  bower --version:       $($PROJECT_PATH/bin/bower --version)
-  generate-md --version: $($PROJECT_PATH/bin/generate-md --version)
-  grunt --version:       $($PROJECT_PATH/bin/grunt --version)
-  gulp --version:        $($PROJECT_PATH/bin/gulp --version)
-  node --version:        $($PROJECT_PATH/bin/node --version)
-  npm --version:         $($PROJECT_PATH/bin/npm --version)
-  yarn --version:        $($PROJECT_PATH/bin/yarn --version)
-"
+#echo "
+#  bower --version:       $($PROJECT_PATH/test/bin/bower --version)
+#  generate-md --version: $($PROJECT_PATH/test/bin/generate-md --version)
+#  grunt --version:       $($PROJECT_PATH/test/bin/grunt --version)
+#  gulp --version:        $($PROJECT_PATH/test/bin/gulp --version)
+#  node --version:        $($PROJECT_PATH/test/bin/node --version)
+#  npm --version:         $($PROJECT_PATH/test/bin/npm --version)
+#  yarn --version:        $($PROJECT_PATH/test/bin/yarn --version)
+#"
 exit $exit_code

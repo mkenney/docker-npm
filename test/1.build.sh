@@ -1,12 +1,11 @@
 #!/bin/bash
 
 PREFIX="        "
-TAG=ci-build
 build_result=0
 failed_tests=
 
 cd $PROJECT_PATH
-docker build --no-cache -t mkenney/npm:$TAG .
+docker build --no-cache -t mkenney/npm:ci-build .
 result=$?
 if [ 0 -ne $result ]; then
     build_result=1
@@ -14,7 +13,8 @@ if [ 0 -ne $result ]; then
 fi
 cd $PROJECT_PATH/test
 
-output=`sh ./node.sh $TAG`
+echo "executing node.sh"
+output=$(bash ./node.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -22,7 +22,8 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests node"
 fi;
 
-output=`sh ./bower.sh $TAG`
+echo "executing bower.sh"
+output=$(bash ./bower.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -30,7 +31,8 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests bower";
 fi;
 
-output=`sh ./npm.sh $TAG`
+echo "executing npm.sh"
+output=$(bash ./npm.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -38,7 +40,8 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests npm";
 fi;
 
-output=`sh ./yarn.sh $TAG`
+echo "executing yarn.sh"
+output=$(bash ./yarn.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -46,7 +49,8 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests yarn"
 fi;
 
-output=`sh ./md.sh $TAG`
+echo "executing md.sh"
+output=$(bash ./md.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -54,7 +58,8 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests md";
 fi;
 
-output=`sh ./grunt.sh $TAG`
+echo "executing grunt.sh"
+output=$(bash ./grunt.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -62,7 +67,8 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests grunt";
 fi;
 
-output=`sh ./gulp.sh $TAG`
+echo "executing gulp.sh"
+output=$(bash ./gulp.sh)
 result=$?
 echo $output
 if [ 0 -ne $result ]; then
@@ -70,8 +76,7 @@ if [ 0 -ne $result ]; then
     failed_tests="$failed_tests gulp"
 fi;
 
-
 if [ 0 -ne $build_result ]; then
-    echo "${PREFIX}Build tests failed: $failed_tests"
+    echo "${PREFIX}build.sh tests failed: $failed_tests"
 fi
 exit $build_result
