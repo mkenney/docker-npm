@@ -7,6 +7,7 @@ DOCKER_NPM_TAG=ci-build
 failed_tests=
 
 for dockerfile in $(list_changes Dockerfile); do
+    echo "$(list_changes Dockerfile)";exit 1
     if [ -f $PROJECT_PATH/$dockerfile ]; then
         printf "\n\n\n -------- Building $dockerfile -------- \n\n\n"
         build_result=0
