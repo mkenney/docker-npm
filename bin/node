@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
-TAG=latest
-BRANCH=master
+TAG=node-8-alpine
+if [ "" != "$DOCKER_NPM_TAG" ]; then
+    TAG="$DOCKER_NPM_TAG"
+fi
 SCRIPT=node
 INSTALL_SCRIPT=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
 

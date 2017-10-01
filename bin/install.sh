@@ -4,7 +4,6 @@ INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/master/b
 INSTALL_SCRIPT=/tmp/docker-npm-install
 SELF=$0
 COMMAND=$1
-TAG=$2
 PREFIX=$3
 
 #
@@ -53,14 +52,13 @@ function usage() {
 
     echo "
     Usage
-        $SELF COMMAND [TAG [PREFIX]]
+        $SELF COMMAND [PREFIX]
 
     Synopsys
         Install a mkenney/npm container execution script locally
 
     Options
         COMMAND  - Required, the name of the command to install (bower, gulp, npm, etc.)
-        TAG      - Optional, the image tag to use. Default 'latest'
         PREFIX   - Optional, the location to install the command script. Default '\$HOME/bin'
 
     Examples
@@ -79,14 +77,11 @@ fi
 #
 # Set defaults
 #
-if [ "" == "$TAG" ]; then
-    TAG=latest
-fi
 if [ "" == "$PREFIX" ]; then
     PREFIX=$HOME/bin
 fi
 
-COMMAND_URL=https://raw.githubusercontent.com/mkenney/docker-npm/${TAG/latest/master}/bin/$COMMAND
+COMMAND_URL=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/$COMMAND
 COMMAND_TEMPFILE=/tmp/docker-npm-$COMMAND-wrapper
 
 #
@@ -102,8 +97,8 @@ fi
 if grep -q '404: Not Found' $COMMAND_TEMPFILE; then
     usage
     echo
-    echo "Not found: The $COMMAND:$TAG script was not found at $COMMAND_URL";
-    echo "Please verify that the COMMAND and TAG values are correct"
+    echo "Not found: The $COMMAND script was not found at $COMMAND_URL";
+    echo "Please verify that the COMMAND values are correct"
     exit 404
 fi
 if ! [ -s $COMMAND_TEMPFILE ]; then

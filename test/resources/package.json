@@ -1,11 +1,15 @@
 {
     "name": "test-project",
     "version": "0.0.1",
-    "devDependencies": {
-        "grunt": "~0.4.5",
-        "grunt-contrib-jshint": "^1.0.0",
-        "gulp": "~3.9.1",
-        "gulp-jshint": "~2.0.1",
-        "jshint": "~2.9.2"
+    "description": "Docker image testing",
+    "license": "MIT",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mkenney/docker-npm"
+    },
+    "dependencies": {
+        "grunt": "*",
+        "gulp": "*"
     }
 }

@@ -5,11 +5,7 @@ language: javascript
 branches:
     only:
         - master
-        - debian
-        - 7.0-alpine
-        - 7.0-debian
-        - 6.9-alpine
-        - 6.9-debian
+        - feature-branches
 
 notifications:
     slack:
@@ -23,7 +19,3 @@ before_install:
 script:
     - cd test
     - ./run-tests.sh
-
-after_success:
-    - cd ../ci
-    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh ./deploy.sh; fi

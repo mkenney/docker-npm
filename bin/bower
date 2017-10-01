@@ -1,13 +1,15 @@
 #!/usr/bin/env sh
 
-TAG=latest
-BRANCH=master
+TAG=node-8-alpine
+if [ "" != "$DOCKER_NPM_TAG" ]; then
+    TAG="$DOCKER_NPM_TAG"
+fi
 SCRIPT=bower
 INSTALL_SCRIPT=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
 
 if [ "self-update" = "$1" ]; then
     docker pull mkenney/npm:$TAG
-    curl -f -L -s $INSTALL_SCRIPT | sh -s $SCRIPT $TAG $(dirname $0) && exit 0
+    curl -f -L -s $INSTALL_SCRIPT | sh -s $SCRIPT $(dirname $0) && exit 0
 else
     if [ -t 0 ]; then
         term_type=ti

@@ -51,7 +51,7 @@ function test_install {
     # Test remote
     rm -f $PROJECT_PATH/test/$path/$script
     echo "${PREFIX}    curl install.sh | bash -s $script $tag $path"
-    output=$(curl -f -L -s https://raw.githubusercontent.com/mkenney/docker-npm/$PARENT_BRANCH/bin/install.sh | bash -s $script $tag $PROJECT_PATH/test/$path)
+    output=$(curl -f -L -s https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh | bash -s $script $tag $PROJECT_PATH/test/$path)
     result=$?
     if [ "0" != "$result" ] || [ "" == "$(echo "$output" | grep -i "installation succeeded")" ]; then
         echo $output
