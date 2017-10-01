@@ -4,7 +4,7 @@ INSTALL_SCRIPT_URL=https://raw.githubusercontent.com/mkenney/docker-npm/master/b
 INSTALL_SCRIPT=/tmp/docker-npm-install
 SELF=$0
 COMMAND=$1
-PREFIX=$3
+PREFIX=$2
 
 #
 # Loosely based on https://npmjs.org/install.sh, run as `curl | sh`

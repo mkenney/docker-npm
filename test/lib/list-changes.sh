@@ -8,6 +8,6 @@ function list_changes() {
     if [ "" != "$CURRENT_BRANCH" ]; then
         git diff --name-only master | grep "$grep_str"
     else
-        git --no-pager diff --name-only HEAD^ | grep "$grep_str"
+        git --no-pager diff --name-only $(git log -2 --format='%H')
     fi
 }

@@ -1,6 +1,5 @@
 FROM node:latest
 
-
 LABEL version="1.0.0" \
       node="v8" \
       os="Debian Wheezy" \

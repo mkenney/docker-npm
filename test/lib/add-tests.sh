@@ -7,39 +7,39 @@ declare -a TESTS=()
 add_tests() {
     echo "  Adding '$1' test suite..."
     case $1 in
-        release|test/1.build.sh|node-alpine/*|node-debian/*|node-8-alpine/*|node-8-debian/*|node-7-alpine/*|node-7.7-alpine/*|node-7.0-debian/*|node-6.9-alpine/*|node-6.9-debian/*)
-            tests="1.build"
+        release|node-alpine/*|node-debian/*|node-8-alpine/*|node-8-debian/*|node-7-alpine/*|node-7.7-alpine/*|node-7.0-debian/*|node-6.9-alpine/*|node-6.9-debian/*)
+            tests="1.build;install;bower;md;grunt;gulp;node;npm;yarn"
             RELEASE="false"
             if [ "release" == $1 ]; then
                 RELEASE="true"
             fi
             export RELEASE
             ;;
-        .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
+        .travis.yml)
             tests="install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
-        bin/bower|test/bower.sh|test/resources/bower.json)
+        bin/bower)
             tests="bower"
             ;;
-        bin/generate-md|test/md.sh|test/resources/md/index.md)
+        bin/generate-md)
             tests="md"
             ;;
-        bin/grunt|test/grunt.sh|test/resources/Gruntfile.js)
+        bin/grunt)
             tests="grunt"
             ;;
-        bin/gulp|test/gulp.sh|test/resources/gulpfile.js)
+        bin/gulp)
             tests="gulp"
             ;;
-        bin/install.sh|test/install.sh)
+        bin/install.sh)
             tests="install"
             ;;
-        bin/node|test/node.sh|default)
+        bin/node)
             tests="node"
             ;;
-        bin/npm|test/npm.sh)
+        bin/npm)
             tests="npm"
             ;;
-        bin/yarn|test/yarn.sh)
+        bin/yarn)
             tests="yarn"
             ;;
         test/resources/package.json)

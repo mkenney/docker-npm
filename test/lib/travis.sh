@@ -17,5 +17,11 @@ if [ "false" == "$TRAVIS_PULL_REQUEST" ]; then
     export TRAVIS_PULL_REQUEST_BRANCH=`git rev-parse --abbrev-ref HEAD`
 fi
 
+DOCKER_NPM_TAG=latest
+if [ "true" == "$TRAVIS" ]; then
+    DOCKER_NPM_TAG=ci-build
+fi
+
 export CURRENT_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
 export PARENT_BRANCH=$TRAVIS_BRANCH
+export DOCKER_NPM_TAG

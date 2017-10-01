@@ -6,6 +6,7 @@ export PROJECT_PATH=$(dirname `pwd`)
 # Test execution methods
 source $PROJECT_PATH/test/lib/add-tests.sh
 source $PROJECT_PATH/test/lib/assert.sh
+source $PROJECT_PATH/test/lib/deploy.sh
 source $PROJECT_PATH/test/lib/execute-tests.sh
 source $PROJECT_PATH/test/lib/list-changes.sh
 source $PROJECT_PATH/test/lib/travis.sh
@@ -36,9 +37,10 @@ else
     done
 fi
 
-if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
-    echo "$CURRENT_BRANCH: $PARENT_BRANCH; $test_found; $TRAVIS_PULL_REQUEST"
-    add_tests release
+if [ "true" == "$TRAVIS" ]; then
+    if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
+        add_tests release
+    fi
 fi
 
 execute_tests $verbose

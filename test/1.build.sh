@@ -1,9 +1,9 @@
 #!/bin/bash
 
 source $PROJECT_PATH/test/lib/list-changes.sh
+source $PROJECT_PATH/test/lib/deploy.sh
 
 PREFIX="        "
-DOCKER_NPM_TAG=ci-build
 failed_tests=
 
 for dockerfile in $(list_changes Dockerfile); do
@@ -89,9 +89,11 @@ for dockerfile in $(list_changes Dockerfile); do
             printf "\n\n\n -------- $dockerfile build tests failed -------- \n\n\n"
             exit $build_result;
         fi
+
+        echo "    ...$(deploy $(dirname $dockerfile))"
+
         printf "\n\n\n -------- $dockerfile build tests succeeded -------- \n\n\n"
 
-        sh $PROJECT_PATH/test/ci/deploy.sh $(dirname $dockerfile)
     fi
 done
 
