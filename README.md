@@ -61,7 +61,7 @@ Essentially, this is just a set of [shell scripts](https://github.com/mkenney/do
 
 #### Images & Wrapper Scripts
 
-The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the current stable `node` and `npm` binaries for [`debian:jessie`](https://hub.docker.com/_/debian/) and [`alpine:3.4`](https://hub.docker.com/_/alpine/). `npm` has been used to install various build tools globally. When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
+The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the current stable `node` and `npm` binaries for [`debian:wheezy`](https://hub.docker.com/_/debian/) and [`alpine:3.4`](https://hub.docker.com/_/alpine/). `npm` has been used to install various build tools globally. When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
 
 The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container) script has three methods of determining which `uid` and `gid` to execute as:
 
@@ -166,6 +166,10 @@ $ DOCKER_NPM_TAG="node-6.9-alpine" npm install
 ```
 
 This is supported by all the wrapper scripts. I will update the default image tag as new node versions are released or stability issues arise.
+
+I also refactored the test and CI integration scripts a bit to simplify that process and to work with the new directory structure. I'm not sure how that will play out with the Jenkins-CI build timeout issue.
+
+Please [let me know](https://github.com/mkenney/docker-npm/issues) if you notice any stability issues with this release.
 
 #### 2017-04-12
 
