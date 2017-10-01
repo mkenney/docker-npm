@@ -1,15 +1,19 @@
 FROM alpine:3.4
 
-MAINTAINER Michael Kenney <mkenney@webbedlam.com>
+LABEL version="1.0.0" \
+      node="v8" \
+      os="Alpine v3.4" \
+      description="Node v8 compiled from source running on Alpine v3.4"
 
-ENV NLS_LANG American_America.AL32UTF8
-ENV LANG C.UTF-8
-ENV LANGUAGE C.UTF-8
-ENV LC_ALL C.UTF-8
-ENV TIMEZONE America/Denver
+ENV TERM=xterm \
+    NLS_LANG=American_America.AL32UTF8 \
+    LANG=C.UTF-8 \
+    LANGUAGE=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    TIMEZONE=America/Denver
 
-ENV NODE_VERSION v8.6.0
-ENV NODE_PREFIX /usr/local
+ENV NODE_VERSION=v8.6.0 \
+    NODE_PREFIX=/usr/local
 
 RUN set -x \
     && echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
@@ -77,10 +81,6 @@ RUN set -x \
     && paxctl -cm ${NODE_PREFIX}/bin/node
 
 RUN set -x \
-    # Upgrade npm
-    # Don't use npm to self-upgrade, see issue https://github.com/npm/npm/issues/9863
-    #&& curl -L https://npmjs.org/install.sh | sh \
-
     # Install node packages
     && npm install --silent -g \
         gulp-cli \

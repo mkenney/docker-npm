@@ -13,7 +13,7 @@ if [ "true" != "$TRAVIS" ]; then
     export TRAVIS_PULL_REQUEST=false
 fi
 
-if [ "false" == "$TRAVIS_PULL_REQUEST" ] || [ "" == "$TRAVIS_PULL_REQUEST" ]; then
+if [ "false" == "$TRAVIS_PULL_REQUEST" ]; then
     export TRAVIS_PULL_REQUEST_BRANCH=`git rev-parse --abbrev-ref HEAD`
 fi
 

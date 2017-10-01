@@ -3,13 +3,17 @@
 # List of tests to execute
 declare -a TESTS=()
 
-
 # Don't add duplicates. Keep list sorted by test name.
 add_tests() {
     echo "  Adding '$1' test suite..."
     case $1 in
-        test/1.build.sh|release|alpine/Dockerfile|debian/Dockerfile|node-6.9-alpine/Dockerfile|node-6.9-debian/Dockerfile|node-7-alpine/Dockerfile|node-7.0-debian/Dockerfile|node-7.7-alpine/Dockerfile|node-8-alpine/Dockerfile|node-8-debian/Dockerfile)
+        release|test/1.build.sh|node-alpine/*|node-debian/*|node-8-alpine/*|node-8-debian/*|node-7-alpine/*|node-7.7-alpine/*|node-7.0-debian/*|node-6.9-alpine/*|node-6.9-debian/*)
             tests="1.build"
+            RELEASE="false"
+            if [ "release" == $1 ]; then
+                RELEASE="true"
+            fi
+            export RELEASE
             ;;
         .travis.yml|test/run-tests.sh|test/lib/assert.sh|test/lib/travis.sh)
             tests="install;bower;md;grunt;gulp;node;npm;yarn"

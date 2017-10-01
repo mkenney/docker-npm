@@ -4,6 +4,8 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://raw.githubusercontent.com/mkenney/docker-npm/master/LICENSE) [![Github issues](https://img.shields.io/github/issues-raw/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/issues) [![build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm)
 
+Please feel free to [create an issue](https://github.com/mkenney/docker-npm/issues) or [open a pull request](https://github.com/mkenney/docker-npm/pull/new/master) if you need support or would like to contribute.
+
 ## Portable `node`, package managers and build tools
 
 - [Tagged Dockerfiles](#tagged-dockerfiles)
@@ -14,58 +16,105 @@
 
 ### Tagged Docker Images
 
+Images are tagged according to the installed Node version and operating system. Package versions are not pinned, instead [`npm`](https://npmjs.org/) is executed to install current versions of each package. If stability issues aries, I will pin package versions in a `Dockerfile` for that Node/OS version and create a image tagged as `stable` based on it. Please [let me know](https://github.com/mkenney/docker-npm/issues) if you run into this situation.
+
 * [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg)
-  This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source. Package versions are not pinned, instead `https://npmjs.org/install.sh` is executed to install a current version of `npm`, which is then used to install current versions of the packages.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg)](https://microbadger.com/images/mkenney/npm:latest)
+  This image is under development and may not be as stable as versioned images. This image is based on a recent version of [alpine](https://hub.docker.com/_/alpine/) and compiles a recent version of `node` from source.
 
 * [`node-8-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/), with the latest version of the `node` v7 branch compiled from source.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-8-alpine) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/), with the latest version of the `node` v8 branch compiled from source.
 
 * [`node-7-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/), with the latest version of the `node` v7 branch compiled from source.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-7-alpine) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/), with the latest version of the `node` v7 branch compiled from source.
 
 * [`node-7.7-alpine`, `7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.7-alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.7-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/), it  `node` v7.7 compiled from source. The `7.0-alpine` tagged version was accidentally upgraded over time to v7.7 and will remain so for the stability of existing users.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.7-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-7.7-alpine) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/), it  `node` v7.7 compiled from source. The `7.0-alpine` tagged version was accidentally upgraded over time to v7.7 and will remain so for the stability of existing users.
 
 * [`node-6.9-alpine`, `6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-alpine/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:6.9-alpine.svg) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-6.9-alpine) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
 * [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg)](https://microbadger.com/images/mkenney/npm:debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`node-8-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg)](https://microbadger.com/images/mkenney/npm:node-8-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`node-7.0-debian`, `7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.0-debian/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.0-debian.svg) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.0-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7.0-debian) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
 
 * [`node-6.9-debian`, `6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-debian/Dockerfile)
 
-  ![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-debian.svg) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-debian.svg)](https://microbadger.com/images/mkenney/npm:node-6.9-debian) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
 ### About
 
-Essentially, this is just a set of [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) that manage a [Node.js](https://nodejs.org/) docker image. The docker image includes a script ([`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container)) that allows commands to run as either the current user or the owner/group of the current directory, which the shell scripts take advantage of to make sure files are written with your preferred permissions rather than root.
+Essentially, this is just a set of [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) that manage a [Node.js](https://nodejs.org/) docker image. The docker image includes a script ([`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container)) that allows commands to write files as either the current user or the owner/group of the current directory, which the shell scripts take advantage of to make sure files are created with your preferred permissions rather than root.
 
-#### Images
+#### Images & Wrapper Scripts
 
-The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the latest stable `node` and `npm` binaries for [`debian:jessie`](https://hub.docker.com/_/debian/) and [`alpine:3.4`](https://hub.docker.com/_/alpine/). `npm` has been used to install various build tools globally. When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` in the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes `npm` as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
+The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the current stable `node` and `npm` binaries for [`debian:jessie`](https://hub.docker.com/_/debian/) and [`alpine:3.4`](https://hub.docker.com/_/alpine/). `npm` has been used to install various build tools globally. When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
 
-If you need additional modules and/or wrapper scripts [let me know](https://github.com/mkenney/docker-npm/issues).
+The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container) script has three methods of determining which `uid` and `gid` to execute as:
+
+* By default, it will execute with a `uid` and `gid` that matches the current directory (the one that gets mounted into `/src`).
+* In order to take advantage of public key authentication when installing packages from private repositories, all the wrapper scripts will attempt to mount your `~/.ssh` directory into the container. When that is successful, the script will run as the `uid` and `gid` of the owner of `~/.ssh` (you).
+
+  Most software that takes advantage of public key authentication protocols do so over SSH, and by default, send the current user name as the login name. Because this process is executing out of a segregated container, it knows nothing about the current user's name and will instead try to login as a user named `dev`. In order to work around this, you need to create a SSH configuration that specifies the correct username.
+
+  In your `~/.ssh` folder create a file called `config`. In that file you need to specify the correct username. For example, to specify your login name for all hosts:
+
+  ```txt
+  Host *
+      User mkenney
+  ```
+
+  You can easily be more explicit as well, specifying by host or with additional wildcards. [Google is your friend](https://duckduckgo.com/?q=ssh+config+file).
+
+  ```txt
+  Host github.com
+      User mkenney
+  ```
+
+* You can also explicitly specify the `uid` and `gid` to use at runtime by defining the `PUID` and `PGID` environment variables when executing the container, this is quite useful in automated build systems:
+
+  ```bash
+  docker run \
+      --rm \
+      -it \
+      -v $(pwd):/src:rw \
+      -e "PUID=<user id>" \
+      -e "PGID=<group id>" \
+      mkenney/npm:latest <commands>
+  ```
+
+The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-8-alpine` at the moment).
+
+To specify a different image, you can define the image tag in your environment which will set a new default (you probably want to define this in your `.bashrc` or similar profile script):
+```txt
+export DOCKER_NPM_TAG=node-6.9-alpine
+```
+
+or you can easily specify it at runtime whenever necessary, for example:
+```txt
+$ DOCKER_NPM_TAG=node-6.9-alpine bower install
+```
+
+If you would to see like additional node modules and/or wrapper scripts added to this project please feel free to [create an issue](https://github.com/mkenney/docker-npm/issues) or [open a pull request](https://github.com/mkenney/docker-npm/pull/new/master).
 
 #### Installation
 
 This assumes that you already have [Docker](https://www.docker.com) installed. A running `docker` daemon is required. You probably want to be able to [run docker commands without sudo](https://docs.docker.com/v1.8/installation/ubuntulinux/#create-a-docker-group), but even if you excute the scripts with sudo files will be written with the appropriate `uid` and `gid`.
 
-Several wrapper scripts are available in the source repository:
+Wrapper scripts for several commands are available in the source repository:
 
 * [`bower`](https://github.com/mkenney/docker-npm/blob/master/bin/bower)
 * [`generate-md`](https://github.com/mkenney/docker-npm/blob/master/bin/generate-md)
@@ -90,8 +139,8 @@ Options
   PREFIX   - Optional, the location to install the command script. Default '$HOME/bin'
 
 Examples
-  $ curl -L https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh | bash -s gulp 7.0-alpine $HOME/bin
-  $ bash ./install.sh gulp 7.0-alpine $HOME/bin
+  $ curl -L https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh | bash -s gulp node-8-alpine $HOME/bin
+  $ bash ./install.sh gulp node-8-alpine $HOME/bin
 ```
 
 ##### Updating
@@ -102,6 +151,22 @@ Examples
 
 ### Change log
 
+#### 2017-10-01
+
+Refactored the release-branch workflow into a feature-branch workflow. This will make updates across tagged images much simpler, less time consuming, and take less effort. As a result the maintenance of the wrapper scripts had to change by either maintaining a copy for each tagged image or consolidating them somehow. I chose the latter, defauting them to the latest stable tagged image (`node-8-alpine` at this time) and added support for specifying an alternate image throgh an environment variable.
+
+To specify a default image, define it's tag in your environment (best to put it in your `.bashrc` or similar profile script):
+```bash
+export DOCKER_NPM_TAG="node-6.9-alpine"
+```
+
+or at runtime:
+```bash
+$ DOCKER_NPM_TAG="node-6.9-alpine" npm install
+```
+
+This is supported by all the wrapper scripts. I will update the default image tag as new node versions are released or stability issues arise.
+
 #### 2017-04-12
 
 Added support for specifying the user and group ids you want to run your container commands to the `/run-as-user` script via `docker run` execution: https://github.com/mkenney/docker-scripts/pull/1/files
@@ -111,7 +176,7 @@ To use this behavior, you can pass `PUID` and `PGID` environment variables when 
 ```bash
   docker run \
       --rm \
-      -ti \
+      -it \
       -v $(pwd):/src:rw \
       -e "PUID=<user id>" \
       -e "PGID=<group id>" \

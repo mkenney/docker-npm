@@ -35,7 +35,9 @@ else
         test_found=1
     done
 fi
+
 if [ "$CURRENT_BRANCH" == "$PARENT_BRANCH" ] || [ "0" == "$test_found" ] || [ "false" == $TRAVIS_PULL_REQUEST ]; then
+    echo "$CURRENT_BRANCH: $PARENT_BRANCH; $test_found; $TRAVIS_PULL_REQUEST"
     add_tests release
 fi
 

@@ -1,9 +1,13 @@
 #!/bin/bash
 
 PREFIX="        "
+IMAGE_TAG=latest
+if [ "" != "$1" ]; then
+    IMAGE_TAG=$1
+fi
 
-NPM="docker run --rm -ti -v $(pwd)/tmp:/home/dev/.npm/_logs:rw -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/npm"
-CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$1 /run-as-user /usr/local/bin/gulp"
+NPM="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /run-as-user /usr/local/bin/npm"
+CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /run-as-user /usr/local/bin/gulp"
 
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules

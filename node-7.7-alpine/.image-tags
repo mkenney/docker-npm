@@ -1,0 +1,8 @@
+# This file is used to define which image tags are triggered for build in CI
+# deployments
+
+declare -a TAGS=(
+    'node-7.7-alpine'
+    '7.0-alpine' # This is due to the tag being mistakenly upgraded over time
+                 # Kept for stability for current users
+)

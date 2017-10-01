@@ -1,12 +1,16 @@
 FROM node:6.9-wheezy
 
-ENV LANG C.UTF-8
-ENV LANGUAGE C.UTF-8
-ENV LC_ALL C.UTF-8
-ENV PATH /root/bin:$PATH
-ENV NLS_LANG American_America.AL32UTF8
-ENV TIMEZONE America/Denver
-ENV TERM xterm
+LABEL version="1.0.0" \
+      node="v6.9" \
+      os="Debian Wheezy" \
+      description="Node v6.9 Official running on Debian Wheezy"
+
+ENV TERM=xterm \
+    NLS_LANG=American_America.AL32UTF8 \
+    LANG=C.UTF-8 \
+    LANGUAGE=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    TIMEZONE=America/Denver
 
 RUN set -x \
     && apt-get -qq update \
