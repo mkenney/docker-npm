@@ -5,7 +5,6 @@ language: javascript
 branches:
     only:
         - master
-        - feature-branches
 
 notifications:
     slack:
