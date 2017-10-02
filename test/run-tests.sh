@@ -45,16 +45,16 @@ fi
 
 execute_tests $verbose
 exit_code=$TEST_EXIT_CODE
-echo "woot - $exit_code"
-#echo "
-#  bower --version:       $($PROJECT_PATH/bin/bower --version)
-#  generate-md --version: $($PROJECT_PATH/bin/generate-md --version)
-#  grunt --version:       $($PROJECT_PATH/bin/grunt --version)
-#  gulp --version:        $($PROJECT_PATH/bin/gulp --version)
-#  node --version:        $($PROJECT_PATH/bin/node --version)
-#  npm --version:         $($PROJECT_PATH/bin/npm --version)
-#  yarn --version:        $($PROJECT_PATH/bin/yarn --version)
-#"
+
+echo "
+  bower --version:       $($PROJECT_PATH/bin/bower --version)
+  generate-md --version: $($PROJECT_PATH/bin/generate-md --version)
+  grunt --version:       $($PROJECT_PATH/bin/grunt --version)
+  gulp --version:        $($PROJECT_PATH/bin/gulp --version)
+  node --version:        $($PROJECT_PATH/bin/node --version)
+  npm --version:         $($PROJECT_PATH/bin/npm --version)
+  yarn --version:        $($PROJECT_PATH/bin/yarn --version)
+"
 
 for dockerfile in $(list_changes Dockerfile); do
     if [ -f $PROJECT_PATH/$dockerfile ]; then
