@@ -14,7 +14,11 @@ if [ "true" != "$TRAVIS" ]; then
 fi
 
 if [ "false" == "$TRAVIS_PULL_REQUEST" ]; then
-    export TRAVIS_PULL_REQUEST_BRANCH=`git rev-parse --abbrev-ref HEAD`
+    TRAVIS_PULL_REQUEST_BRANCH=`git rev-parse --abbrev-ref HEAD`
+    if [ "HEAD" == "$TRAVIS_PULL_REQUEST_BRANCH" ]; then
+        TRAVIS_PULL_REQUEST_BRANCH=master
+    fi
+    export TRAVIS_PULL_REQUEST_BRANCH
 fi
 
 DOCKER_NPM_TAG=latest
