@@ -47,6 +47,10 @@ Images are tagged according to the installed Node version and operating system. 
 
   [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg)](https://microbadger.com/images/mkenney/npm:node-8-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
+* [`node-7-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-debian/Dockerfile)
+
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7-debian) Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
+
 * [`node-7.0-debian`, `7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.0-debian/Dockerfile)
 
   [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.0-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7.0-debian) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
@@ -112,7 +116,7 @@ If you would to see like additional node modules and/or wrapper scripts added to
 
 #### Installation
 
-This assumes that you already have [Docker](https://www.docker.com) installed. A running `docker` daemon is required. You probably want to be able to [run docker commands without sudo](https://docs.docker.com/v1.8/installation/ubuntulinux/#create-a-docker-group), but even if you excute the scripts with sudo files will be written with the appropriate `uid` and `gid`.
+This assumes that you already have [Docker](https://www.docker.com) installed. A running `docker` daemon is required. You probably want to be able to [run docker commands without sudo](https://docs.docker.com/engine/installation/linux/linux-postinstall/), but even if you excute the scripts with sudo files will be written with the appropriate `uid` and `gid`.
 
 Wrapper scripts for several commands are available in the source repository:
 

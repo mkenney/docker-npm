@@ -7,27 +7,25 @@ declare -a TESTS=()
 add_tests() {
     echo "  Adding '$1' test suite..."
     case $1 in
-        release|node-alpine/*|node-debian/*|node-8-alpine/*|node-8-debian/*|node-7-alpine/*|node-7.7-alpine/*|node-7.0-debian/*|node-6.9-alpine/*|node-6.9-debian/*)
+        release)
             tests="1.build;install;bower;md;grunt;gulp;node;npm;yarn"
-            RELEASE="false"
-            if [ "release" == $1 ]; then
-                RELEASE="true"
-            fi
-            export RELEASE
+            ;;
+        node-alpine/*|node-debian/*|node-8-alpine/*|node-8-debian/*|node-7-alpine/*|node-7-debian/*|node-7.7-alpine/*|node-7.0-debian/*|node-6.9-alpine/*|node-6.9-debian/*)
+            tests="1.build"
             ;;
         .travis.yml)
             tests="install;bower;md;grunt;gulp;node;npm;yarn"
             ;;
-        bin/bower)
+        bin/bower|test/resources/bower.json)
             tests="bower"
             ;;
-        bin/generate-md)
+        bin/generate-md|test/resources/md/index.md)
             tests="md"
             ;;
-        bin/grunt)
+        bin/grunt|test/resources/Gruntfile.js)
             tests="grunt"
             ;;
-        bin/gulp)
+        bin/gulp|test/resources/gulpfile.js)
             tests="gulp"
             ;;
         bin/install.sh)
