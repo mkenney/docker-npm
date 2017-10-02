@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Execute all the requested tests
-execute_tests() {
-    TEST_EXIT_CODE=0
+export TEST_EXIT_CODE=0
+function execute_tests() {
     echo "
     Executing tests... ${TESTS[@]}"
 
@@ -29,5 +29,4 @@ execute_tests() {
             echo
         fi
     done
-    exit $TEST_EXIT_CODE
 }

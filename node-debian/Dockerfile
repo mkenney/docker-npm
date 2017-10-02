@@ -99,3 +99,4 @@ WORKDIR /src
 
 ENTRYPOINT ["/run-as-user"]
 CMD ["/usr/local/bin/npm"]
+
