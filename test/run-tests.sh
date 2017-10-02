@@ -56,4 +56,10 @@ echo "
   yarn --version:        $($PROJECT_PATH/bin/yarn --version)
 "
 
+for dockerfile in $(list_changes Dockerfile); do
+    if [ -f $PROJECT_PATH/$dockerfile ]; then
+        echo "    ...$(deploy $(dirname $dockerfile))"
+    fi
+done
+
 exit $exit_code

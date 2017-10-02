@@ -12,14 +12,14 @@ function deploy() {
         source $PROJECT_PATH/$1/.image-tags
         for tag in "${TAGS[@]}"; do
             echo "    - ${TAGS[tag]}"
-            #curl \
-            #    -H "Content-Type: application/json" \
-            #    --data "{\"docker_tag\": \"${TAGS[tag]}\"}" \
-            #    -X POST \
-            #    "https://registry.hub.docker.com/u/mkenney/npm/trigger/$DOCKER_TOKEN/"
+            curl \
+                -H "Content-Type: application/json" \
+                --data "{\"docker_tag\": \"${TAGS[tag]}\"}" \
+                -X POST \
+                "https://registry.hub.docker.com/u/mkenney/npm/trigger/$DOCKER_TOKEN/"
 
             # Because Docker Hub throttles API calls a bit heavily
-            #sleep 60
+            sleep 30
         done
     fi
 }
