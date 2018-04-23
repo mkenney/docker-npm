@@ -16,5 +16,5 @@ else
     else
         term_type=i
     fi
-    docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:$TAG /run-as-user /usr/local/bin/$SCRIPT $@
+    docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:$TAG /usr/local/bin/$SCRIPT $@
 fi
