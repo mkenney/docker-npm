@@ -39,12 +39,14 @@ RUN set -x \
         bower \
         markdown-styles \
         yarn \
+        npx \
     && npm upgrade --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn
+        yarn \
+        npx
 
 ##############################################################################
 # UTF-8 Locale, timezone
