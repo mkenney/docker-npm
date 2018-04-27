@@ -6,7 +6,7 @@ if [ "" != "$1" ]; then
     IMAGE_TAG=$1
 fi
 
-CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /run-as-user /usr/local/bin/yarn"
+CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /usr/local/bin/yarn"
 
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules
