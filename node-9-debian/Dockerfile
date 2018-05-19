@@ -1,9 +1,11 @@
-FROM node:8-wheezy
+FROM node:9-stretch
 
-LABEL version="1.0.0" \
-      node="v8" \
-      os="Debian Wheezy" \
-      description="Node v8 Official running on Debian Wheezy"
+LABEL org.label-schema.schema-version = 1.0.0 \
+    org.label-schema.vendor = mkenney@webbedlam.com \
+    org.label-schema.vcs-url = https://github.com/mkenney/docker-npm \
+    org.label-schema.description = "This image provides node v9 based build tools." \
+    org.label-schema.name = "NPM" \
+    org.label-schema.url = http://mkenney.github.io/docker-npm/
 
 ENV TERM=xterm \
     NLS_LANG=American_America.AL32UTF8 \

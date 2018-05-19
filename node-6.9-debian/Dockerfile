@@ -1,9 +1,11 @@
 FROM node:6.9-wheezy
 
-LABEL version="1.0.0" \
-      node="v6.9" \
-      os="Debian Wheezy" \
-      description="Node v6.9 Official running on Debian Wheezy"
+LABEL org.label-schema.schema-version = 1.0.0 \
+    org.label-schema.vendor = mkenney@webbedlam.com \
+    org.label-schema.vcs-url = https://github.com/mkenney/docker-npm \
+    org.label-schema.description = "This image provides node v6 based build tools." \
+    org.label-schema.name = "NPM" \
+    org.label-schema.url = http://mkenney.github.io/docker-npm/
 
 ENV TERM=xterm \
     NLS_LANG=American_America.AL32UTF8 \
@@ -12,6 +14,9 @@ ENV TERM=xterm \
     LC_ALL=C.UTF-8 \
     TIMEZONE=America/Denver
 
+##############################################################################
+# Build tools
+##############################################################################
 RUN set -x \
     && apt-get -qq update \
     && apt-get install -qqy apt-utils \
@@ -24,14 +29,10 @@ RUN set -x \
         subversion \
         sudo \
         wget \
-
     # Restore a borne-shell compatible default shell
     && rm /bin/sh \
-    && ln -s /bin/bash /bin/sh
-
-
+    && ln -s /bin/bash /bin/sh \
     # install npm packages
-RUN set -x \
     && rm -f /usr/local/bin/yarn \
     && npm install --silent --global \
         gulp-cli \
@@ -49,7 +50,6 @@ RUN set -x \
 ##############################################################################
 # UTF-8 Locale, timezone
 ##############################################################################
-
 RUN set -x \
     && apt-get install -qqy locales \
     && locale-gen C.UTF-8 ${UTF8_LOCALE} \
@@ -64,7 +64,6 @@ RUN set -x \
 ##############################################################################
 # users
 ##############################################################################
-
 RUN set -x \
     # Configure root account
     && echo "export NLS_LANG=$(echo $NLS_LANG)"                >> /root/.bash_profile \
@@ -73,7 +72,6 @@ RUN set -x \
     && echo "export LC_ALL=$(echo $LC_ALL)"                    >> /root/.bash_profile \
     && echo "export TERM=xterm"                                >> /root/.bash_profile \
     && echo "export PATH=$(echo $PATH)"                        >> /root/.bash_profile \
-
     # Add a dev user and configure
     && groupadd dev \
     && useradd dev -s /bin/bash -m -g dev \
@@ -86,11 +84,9 @@ RUN set -x \
 ##############################################################################
 # ~ fin ~
 ##############################################################################
-
 RUN set -x \
     && wget -O /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
     && chmod 0755 /run-as-user \
-
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
