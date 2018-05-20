@@ -14,6 +14,9 @@ ENV TERM=xterm \
     LC_ALL=C.UTF-8 \
     TIMEZONE=America/Denver
 
+########################################################################
+# Build tools
+########################################################################
 RUN set -x \
     && apk update \
     && apk add \
@@ -22,16 +25,13 @@ RUN set -x \
         git \
         mercurial \
         subversion \
-        sudo
-
-RUN set -x \
+        sudo \
     # Install node packages
-    && npm install --silent -g \
-        gulp-cli \
-        grunt-cli \
-        bower \
-        markdown-styles \
-        yarn \
+    && npm install --silent -g gulp-cli \
+    && npm install --silent -g grunt-cli \
+    && npm install --silent -g bower \
+    && npm install --silent -g markdown-styles \
+    && npm install -v -g yarn \
     # Create a dev user to use as the directory owner
     && addgroup dev \
     && adduser -D -s /bin/sh -G dev dev \

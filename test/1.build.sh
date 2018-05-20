@@ -12,7 +12,7 @@ for dockerfile in $(list_changes Dockerfile); do
 
         echo "    ...build"
         cd $PROJECT_PATH/$(dirname $dockerfile)
-        docker build -t mkenney/npm:$DOCKER_NPM_TAG .
+        docker build -t mkenney/npm:$(dirname $dockerfile) .
         result=$?
         if [ 0 -ne $result ]; then
             echo "${PREFIX}$dockerfile build failed"
@@ -21,7 +21,7 @@ for dockerfile in $(list_changes Dockerfile); do
         cd $PROJECT_PATH/test
 
         echo "    ...node"
-        output=`sh ./node.sh $DOCKER_NPM_TAG`
+        output=`sh ./node.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -30,7 +30,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...bower"
-        output=`sh ./bower.sh $DOCKER_NPM_TAG`
+        output=`sh ./bower.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -39,7 +39,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...npm"
-        output=`sh ./npm.sh $DOCKER_NPM_TAG`
+        output=`sh ./npm.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -48,7 +48,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...yarn"
-        output=`sh ./yarn.sh $DOCKER_NPM_TAG`
+        output=`sh ./yarn.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -57,7 +57,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...grunt"
-        output=`sh ./grunt.sh $DOCKER_NPM_TAG`
+        output=`sh ./grunt.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -66,7 +66,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...gulp"
-        output=`sh ./gulp.sh $DOCKER_NPM_TAG`
+        output=`sh ./gulp.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -75,7 +75,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...markdown-styles"
-        output=`sh ./md.sh $DOCKER_NPM_TAG`
+        output=`sh ./md.sh $(dirname $dockerfile)`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
