@@ -12,7 +12,7 @@ for dockerfile in $(list_changes Dockerfile); do
 
         echo "    ...build"
         cd $PROJECT_PATH/$(dirname $dockerfile)
-        docker build -t mkenney/npm:$(dirname $dockerfile) .
+        docker build -t mkenney/npm:ci-build .
         result=$?
         if [ 0 -ne $result ]; then
             echo "${PREFIX}$dockerfile build failed"
@@ -21,7 +21,7 @@ for dockerfile in $(list_changes Dockerfile); do
         cd $PROJECT_PATH/test
 
         echo "    ...node"
-        output=`sh ./node.sh $(dirname $dockerfile)`
+        output=`sh ./node.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -30,7 +30,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...bower"
-        output=`sh ./bower.sh $(dirname $dockerfile)`
+        output=`sh ./bower.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -39,7 +39,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...npm"
-        output=`sh ./npm.sh $(dirname $dockerfile)`
+        output=`sh ./npm.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -48,7 +48,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...yarn"
-        output=`sh ./yarn.sh $(dirname $dockerfile)`
+        output=`sh ./yarn.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -57,7 +57,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...grunt"
-        output=`sh ./grunt.sh $(dirname $dockerfile)`
+        output=`sh ./grunt.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -66,7 +66,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...gulp"
-        output=`sh ./gulp.sh $(dirname $dockerfile)`
+        output=`sh ./gulp.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -75,7 +75,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...markdown-styles"
-        output=`sh ./md.sh $(dirname $dockerfile)`
+        output=`sh ./md.sh ci-build`
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
