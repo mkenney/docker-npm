@@ -9,13 +9,8 @@ function execute_tests() {
     for test in "${!TESTS[@]}"; do
         echo "
     Executing test '${TESTS[test]}'..."
-        test_result=$(assert "${TESTS[test]}.sh" 0)
+        bash $(dirname `pwd`)/test/${TESTS[test]}.sh
         result=$?
-
-        echo "
-        $test_result"
-        echo
-
         if [ 0 -ne $result ]; then
             echo "failure (#$result)"
             TEST_EXIT_CODE=1
@@ -23,6 +18,5 @@ function execute_tests() {
             echo "
         success"
         fi
-
     done
 }
