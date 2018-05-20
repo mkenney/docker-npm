@@ -12,8 +12,8 @@ CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IM
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 rm -f package.lock
-$NPM install > /dev/null
-$NPM cache clean > /dev/null
+$NPM install
+$NPM cache clean
 
 output=`$CMD`
 result=$?
