@@ -13,6 +13,7 @@ cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 rm -f package.lock
 $NPM install > /dev/null
+$NPM cache clean > /dev/null
 
 output=`$CMD`
 result=$?
