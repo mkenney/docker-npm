@@ -20,6 +20,8 @@ if [ 0 -ne $result ]; then
     exit $result
 fi
 
+ls -laF bower_components/jquery/src/deprecated.js
+
 ls bower_components
 result=$?
 if [ 0 -ne $result ]; then
