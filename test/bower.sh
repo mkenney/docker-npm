@@ -6,8 +6,6 @@ if [ "" != "$1" ]; then
     IMAGE_TAG=$1
 fi
 
-docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG whoami
-
 CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /usr/local/bin/bower  --allow-root"
 
 cd $PROJECT_PATH/test/resources
@@ -20,6 +18,8 @@ if [ 0 -ne $result ]; then
     exit $result
 fi
 
+docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG whoami
+docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF bower_components/jquery/src/deprecated.js
 ls -laF bower_components/jquery/src/deprecated.js
 
 ls bower_components
