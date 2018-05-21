@@ -15,14 +15,12 @@ $CMD install
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD install'"
-    echo "${PREFIX}${PREFIX}${output}"
     exit $result
 fi
 
 ls bower_components
 result=$?
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: '$CMD ls bower_components'"
     echo "${PREFIX}${PREFIX}${output}"
 fi
 rm -rf bower_components

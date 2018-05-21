@@ -12,19 +12,17 @@ cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 rm -f package.lock
 
-output=`$CMD install`
+$CMD install
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD install'"
-    echo "${PREFIX}${PREFIX}${output}"
     exit $result
 fi
 
-output=`ls node_modules`
+ls node_modules
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: 'ls node_modules'"
-    echo "${PREFIX}${PREFIX}${output}"
 fi
 rm -rf node_modules
 rm -f package.lock
