@@ -12,7 +12,7 @@ ENV TERM=xterm \
     LC_ALL=C.UTF-8 \
     TIMEZONE=America/Denver
 
-ENV NODE_VERSION=v8.6.0 \
+ENV NODE_VERSION=v8.9.4 \
     NODE_PREFIX=/usr/local
 
 RUN set -x \
