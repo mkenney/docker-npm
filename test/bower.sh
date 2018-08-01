@@ -9,6 +9,10 @@ fi
 CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /usr/local/bin/bower  --allow-root"
 
 cd $PROJECT_PATH/test/resources
+
+ls -laF
+exit 1
+
 rm -rf bower_components
 
 $CMD install
