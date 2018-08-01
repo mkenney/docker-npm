@@ -18,10 +18,6 @@ if [ 0 -ne $result ]; then
     exit $result
 fi
 
-docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG whoami
-docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF bower_components/jquery/src/deprecated.js
-ls -laF bower_components/jquery/src/deprecated.js
-
 ls bower_components
 result=$?
 if [ 0 -ne $result ]; then
