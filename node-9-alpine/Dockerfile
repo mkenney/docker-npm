@@ -1,9 +1,9 @@
-FROM node:7.7-alpine
+FROM node:9-alpine
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
     org.label-schema.vcs-url = https://github.com/mkenney/docker-npm \
-    org.label-schema.description = "This image provides node v7.7 based build tools." \
+    org.label-schema.description = "This image provides node v9 based build tools." \
     org.label-schema.name = "NPM" \
     org.label-schema.url = http://mkenney.github.io/docker-npm/
 
@@ -25,13 +25,16 @@ RUN set -x \
         git \
         mercurial \
         subversion \
-        sudo \
+        sudo
+
+RUN set -x \
     # Install node packages
-    && npm install --silent -g gulp-cli \
-    && npm install --silent -g grunt-cli \
-    && npm install --silent -g bower \
-    && npm install --silent -g markdown-styles \
-    && npm install -v -g yarn \
+    && npm install --silent -g \
+        gulp-cli \
+        grunt-cli \
+        bower \
+        markdown-styles \
+        yarn \
     # Create a dev user to use as the directory owner
     && addgroup dev \
     && adduser -D -s /bin/sh -G dev dev \

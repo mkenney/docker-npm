@@ -11,18 +11,20 @@ CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IM
 cd $PROJECT_PATH/test/resources
 rm -rf bower_components
 
-output=`$CMD install`
+$CMD install
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD install'"
-    echo "${PREFIX}${PREFIX}${output}"
     exit $result
 fi
 
-output=`ls bower_components`
+docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG whoami
+docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF bower_components/jquery/src/deprecated.js
+ls -laF bower_components/jquery/src/deprecated.js
+
+ls bower_components
 result=$?
 if [ 0 -ne $result ]; then
-    echo "${PREFIX}command failed: '$CMD ls bower_components'"
     echo "${PREFIX}${PREFIX}${output}"
 fi
 rm -rf bower_components

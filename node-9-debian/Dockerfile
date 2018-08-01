@@ -1,9 +1,9 @@
-FROM node:latest
+FROM node:9-stretch
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
     org.label-schema.vcs-url = https://github.com/mkenney/docker-npm \
-    org.label-schema.description = "This image provides node based build tools." \
+    org.label-schema.description = "This image provides node v9 based build tools." \
     org.label-schema.name = "NPM" \
     org.label-schema.url = http://mkenney.github.io/docker-npm/
 

@@ -9,24 +9,14 @@ function execute_tests() {
     for test in "${!TESTS[@]}"; do
         echo "
     Executing test '${TESTS[test]}'..."
-        if [ "1.build" == "${TESTS[test]}" ]; then
-            bash $(dirname `pwd`)/test/1.build.sh
-            result=$?
-        else
-            test_result=$(assert "${TESTS[test]}.sh" 0)
-            result=$?
-        fi
+        bash $(dirname `pwd`)/test/${TESTS[test]}.sh
+        result=$?
         if [ 0 -ne $result ]; then
             echo "failure (#$result)"
             TEST_EXIT_CODE=1
         else
             echo "
         success"
-        fi
-        if [ "-v" == "$1" ] || [ 0 -ne $result ] || [ "1.build" == "${TESTS[test]}" ]; then
-            echo "
-        $test_result"
-            echo
         fi
     done
 }

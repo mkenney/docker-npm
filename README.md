@@ -155,6 +155,12 @@ Examples
 
 ### Change log
 
+#### 2018-05-20
+
+* Added Node v9 images
+* Refactored Alpine images to use Node official base images to improve build times (docker hub builds timeout after an hour)
+* General `Dockerfile` cleanup and refactoring
+
 #### 2017-10-01
 
 Refactored the release-branch workflow into a feature-branch workflow. This will make updates across tagged images much simpler, less time consuming, and take less effort. As a result the maintenance of the wrapper scripts had to change by either maintaining a copy for each tagged image or consolidating them somehow. I chose the latter, defauting them to the latest stable tagged image (`node-8-alpine` at this time) and added support for specifying an alternate image throgh an environment variable.

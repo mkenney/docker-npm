@@ -12,7 +12,7 @@ for dockerfile in $(list_changes Dockerfile); do
 
         echo "    ...build"
         cd $PROJECT_PATH/$(dirname $dockerfile)
-        docker build -t mkenney/npm:$DOCKER_NPM_TAG .
+        docker build -t mkenney/npm:ci-build .
         result=$?
         if [ 0 -ne $result ]; then
             echo "${PREFIX}$dockerfile build failed"
@@ -21,7 +21,7 @@ for dockerfile in $(list_changes Dockerfile); do
         cd $PROJECT_PATH/test
 
         echo "    ...node"
-        output=`sh ./node.sh $DOCKER_NPM_TAG`
+        sh ./node.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -30,7 +30,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...bower"
-        output=`sh ./bower.sh $DOCKER_NPM_TAG`
+        sh ./bower.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -39,7 +39,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...npm"
-        output=`sh ./npm.sh $DOCKER_NPM_TAG`
+        sh ./npm.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -48,7 +48,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...yarn"
-        output=`sh ./yarn.sh $DOCKER_NPM_TAG`
+        sh ./yarn.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -57,7 +57,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...grunt"
-        output=`sh ./grunt.sh $DOCKER_NPM_TAG`
+        sh ./grunt.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -66,7 +66,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...gulp"
-        output=`sh ./gulp.sh $DOCKER_NPM_TAG`
+        sh ./gulp.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -75,7 +75,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...markdown-styles"
-        output=`sh ./md.sh $DOCKER_NPM_TAG`
+        sh ./md.sh ci-build
         result=$?
         echo $output
         if [ 0 -ne $result ]; then

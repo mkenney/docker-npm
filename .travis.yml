@@ -14,7 +14,10 @@ services:
     - docker
 
 before_install:
+    - cd test
+    - chmod 777 resources
 
 script:
     - cd test
+    - ls -laF resources/
     - ./run-tests.sh
