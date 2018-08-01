@@ -10,6 +10,11 @@ CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IM
 
 cd $PROJECT_PATH/test/resources
 
+#build testing
+
+echo "User $(whoami): $(id -u dev):$(id -g dev)"
+
+echo "stats: $(stat -c '%u' /src):$(stat -c '%g' /src)"
 ls -laF
 exit 1
 
