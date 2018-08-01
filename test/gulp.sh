@@ -12,13 +12,13 @@ CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IM
 cd $PROJECT_PATH/test/resources
 rm -rf node_modules
 rm -f package.lock
-$NPM install > /dev/null
+$NPM install
+$NPM cache clean
 
-output=`$CMD`
+$CMD
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD'"
-    echo "${PREFIX}${PREFIX}${output}"
 fi
 rm -rf node_modules
 rm -f package.lock
