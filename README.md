@@ -51,9 +51,13 @@ Images are tagged according to the installed Node version and operating system. 
 
   [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg)](https://microbadger.com/images/mkenney/npm:debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
+* [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
+
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-10-debian.svg)](https://microbadger.com/images/mkenney/npm:node-10-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/10-alpine/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+
 * [`node-8-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile)
 
-  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg)](https://microbadger.com/images/mkenney/npm:node-8-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+  [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg)](https://microbadger.com/images/mkenney/npm:node-8-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/8-alpine/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
 * [`node-7-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-debian/Dockerfile)
 
