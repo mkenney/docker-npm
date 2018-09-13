@@ -34,15 +34,15 @@ Based on [`node:8-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/)
 
 Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), with the latest version of the `node` v7 branch compiled from source.
 
-##### [`node-7.7-alpine`, `7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.7-alpine/Dockerfile) [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked)
+##### [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) [`node-7.7-alpine`, `7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.7-alpine/Dockerfile)
 
 Based on [`node:7.7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), it  `node` v7.7 compiled from source. The `7.0-alpine` tagged version was accidentally upgraded over time to v7.7 and will remain so for the stability of existing users.
 
-##### [`node-6.9-alpine`, `6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-alpine/Dockerfile) [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked)
+##### [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) [`node-6.9-alpine`, `6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-alpine/Dockerfile)
 
 Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
-##### [`6-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6-alpine/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-6-alpine)
+##### [`6-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6-alpine/Dockerfile)
 
 Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/).
 
