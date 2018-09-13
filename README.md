@@ -24,7 +24,11 @@ This image should be considered under development and may not be as stable as ve
 
 ##### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
 
-Based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/).
+Based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/10-alpine/).
+
+##### [`node-9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-9-alpine/Dockerfile)
+
+Based on [`node:9-alpine`](https://hub.docker.com/r/library/node/tags/9-alpine/).
 
 ##### [`node-8-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-alpine/Dockerfile)
 
@@ -32,7 +36,7 @@ Based on [`node:8-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/)
 
 ##### [`node-7-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-alpine/Dockerfile)
 
-Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), with the latest version of the `node` v7 branch compiled from source.
+Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/).
 
 ##### [`node-7.7-alpine`, `7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.7-alpine/Dockerfile)
 
