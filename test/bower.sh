@@ -13,8 +13,8 @@ cd $PROJECT_PATH/test/resources
 #build testing
 
 echo "ENV:"
-echo "User $(whoami): $(id -u dev):$(id -g dev)"
-echo "stats: $(stat -c '%u' `pwd`):$(stat -c '%g' `pwd`)"
+echo "User $(whoami): -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami))"
+echo "$(pwd): uid=$(stat -c '%u' `pwd`) gid=$(stat -c '%g' `pwd`)"
 ls -laF
 echo
 echo "CONTAINER:"
