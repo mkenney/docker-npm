@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:alpine
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
