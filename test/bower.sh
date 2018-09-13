@@ -13,7 +13,7 @@ cd $PROJECT_PATH/test/resources
 #build testing
 
 echo "ENV:"
-echo "User $(whoami): -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami))"
+echo "User $(whoami): uid=$(id -u $(whoami)) gid=$(id -g $(whoami))"
 echo "$(pwd): uid=$(stat -c '%u' `pwd`) gid=$(stat -c '%g' `pwd`)"
 ls -laF
 echo
@@ -24,6 +24,7 @@ echo "gid: $(docker run --rm -ti -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(wh
 
 echo "/src uid: $(docker run --rm -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG stat -c '%u' /src)"
 echo "/src gid: $(docker run --rm -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG stat -c '%g' /src)"
+echo docker run --rm  -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF
 docker run --rm  -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF
 exit 1
 
