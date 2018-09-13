@@ -28,8 +28,10 @@ RUN set -x \
         sudo
 
 RUN set -x \
+    touch /root/.profile \
     # Install node packages
     && npm install --silent -g \
+        #gnupg \
         gulp-cli \
         grunt-cli \
         bower \
@@ -48,6 +50,7 @@ RUN set -x \
 ##############################################################################
 
 RUN set -x \
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh \
     && apk del \
         curl \
         gnupg \
