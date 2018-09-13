@@ -26,6 +26,8 @@ echo "/src uid: $(docker run --rm -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(w
 echo "/src gid: $(docker run --rm -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG stat -c '%g' /src)"
 echo docker run --rm  -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF
 docker run --rm  -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF
+echo docker run --rm  -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG touch test.txt
+docker run --rm  -e PUID=$(id -u $(whoami)) -e PGID=$(id -g $(whoami)) -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG touch test.txt
 exit 1
 
 rm -rf bower_components
