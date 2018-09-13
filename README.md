@@ -18,58 +18,56 @@ Please feel free to [create an issue](https://github.com/mkenney/docker-npm/issu
 
 Images are tagged according to the installed Node version and operating system. Package versions are not pinned, instead [`npm`](https://npmjs.org/) is executed to install current versions of each package. If stability issues aries, I will pin package versions in a `Dockerfile` for that Node/OS version and create a image tagged as `stable` based on it. Please [let me know](https://github.com/mkenney/docker-npm/issues) if you run into this situation.
 
-##### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
-
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg)](https://microbadger.com/images/mkenney/npm:latest)
+##### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:latest.svg)](https://microbadger.com/images/mkenney/npm:latest)
   This image should be considered under development and may not be as stable as versioned images. This image is based on [node:alpine](https://hub.docker.com/_/node/).
 
-##### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
+##### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-10-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-10-alpine)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-10-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-10-alpine) Based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/).
+Based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/).
 
-##### [`node-8-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-alpine/Dockerfile)
+##### [`node-8-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-alpine/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-8-alpine)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-8-alpine) Based on [`node:8-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/).
+Based on [`node:8-alpine`](https://hub.docker.com/r/library/node/tags/8-alpine/).
 
-##### [`node-7-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-alpine/Dockerfile)
+##### [`node-7-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-alpine/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-7-alpine)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-7-alpine) Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), with the latest version of the `node` v7 branch compiled from source.
+Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), with the latest version of the `node` v7 branch compiled from source.
 
-##### [`node-7.7-alpine`, `7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.7-alpine/Dockerfile) [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked)
+##### [`node-7.7-alpine`, `7.0-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.7-alpine/Dockerfile) [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.7-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-7.7-alpine)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.7-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-7.7-alpine) Based on [`node:7.7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), it  `node` v7.7 compiled from source. The `7.0-alpine` tagged version was accidentally upgraded over time to v7.7 and will remain so for the stability of existing users.
+Based on [`node:7.7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/), it  `node` v7.7 compiled from source. The `7.0-alpine` tagged version was accidentally upgraded over time to v7.7 and will remain so for the stability of existing users.
 
-##### [`node-6.9-alpine`, `6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-alpine/Dockerfile) [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked)
+##### [`node-6.9-alpine`, `6.9-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-alpine/Dockerfile) [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-6.9-alpine)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-6.9-alpine) Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
+Based on [`alpine:3.4`](https://hub.docker.com/r/library/alpine/tags/3.4/) with `node` v6.9 compiled from source.
 
-##### [`6-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6-alpine/Dockerfile)
+##### [`6-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6-alpine/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-6-alpine)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6-alpine.svg)](https://microbadger.com/images/mkenney/npm:node-6-alpine) Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/).
+Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/).
 
-##### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
+##### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg)](https://microbadger.com/images/mkenney/npm:debian)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:debian.svg)](https://microbadger.com/images/mkenney/npm:debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
-##### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
+##### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-10-debian.svg)](https://microbadger.com/images/mkenney/npm:node-10-debian)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-10-debian.svg)](https://microbadger.com/images/mkenney/npm:node-10-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/10-alpine/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image is under development and may not be as stable as versioned images. This image is based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/10-alpine/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
-##### [`node-8-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile)
+##### [`node-8-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg)](https://microbadger.com/images/mkenney/npm:node-8-debian)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-8-debian.svg)](https://microbadger.com/images/mkenney/npm:node-8-debian) This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/8-alpine/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/8-alpine/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
 
-##### [`node-7-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-debian/Dockerfile)
+##### [`node-7-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-debian/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7-debian)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7-debian) Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
+Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
 
-##### [`node-7.0-debian`, `7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.0-debian/Dockerfile)
+##### [`node-7.0-debian`, `7.0-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7.0-debian/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.0-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7.0-debian)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-7.0-debian.svg)](https://microbadger.com/images/mkenney/npm:node-7.0-debian) Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
+Based on[`node:7.0-wheezy`](https://hub.docker.com/r/library/node/tags/7.0-wheezy/).
 
-##### [`node-6.9-debian`, `6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-debian/Dockerfile)
+##### [`node-6.9-debian`, `6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-debian/Dockerfile) [![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-debian.svg)](https://microbadger.com/images/mkenney/npm:node-6.9-debian)
 
-[![Layers](https://images.microbadger.com/badges/image/mkenney/npm:node-6.9-debian.svg)](https://microbadger.com/images/mkenney/npm:node-6.9-debian) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
+Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
 ### About
 
