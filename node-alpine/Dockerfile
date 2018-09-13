@@ -30,7 +30,7 @@ RUN set -x \
         sudo
 
 RUN set -x \
-    touch /root/.profile \
+    && touch /root/.profile \
     # Install node packages
     && npm install --silent -g \
         gulp-cli \
