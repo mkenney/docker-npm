@@ -1,4 +1,4 @@
-FROM node:9-alpine
+FROM node:alpine
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
@@ -23,11 +23,14 @@ RUN set -x \
         ca-certificates \
         curl \
         git \
+        gnupg \
         mercurial \
+        shadow \
         subversion \
         sudo
 
 RUN set -x \
+    touch /root/.profile \
     # Install node packages
     && npm install --silent -g \
         gulp-cli \
@@ -48,6 +51,7 @@ RUN set -x \
 ##############################################################################
 
 RUN set -x \
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh \
     && apk del \
         curl \
         gnupg \
