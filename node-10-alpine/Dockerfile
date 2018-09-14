@@ -37,11 +37,11 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
     # Create a dev user to use as the directory owner
     && addgroup dev \
     && adduser -D -s /bin/sh -G dev dev \
     && echo "dev:password" | chpasswd \
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh \
     # Setup wrapper scripts
     && curl -o /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
     && chmod 0755 /run-as-user
@@ -51,7 +51,6 @@ RUN set -x \
 ##############################################################################
 
 RUN set -x \
-    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh \
     && apk del \
         curl \
         gnupg \
