@@ -23,6 +23,7 @@ RUN set -x \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get -qq update \
     && apt-get install -qqy \
+        acl \
         git \
         mercurial \
         rsync \
@@ -85,7 +86,8 @@ RUN set -x \
     && rsync -a /root/ /home/dev/ \
     && chown -R dev:dev /home/dev/ \
     && chmod 0777 /home/dev \
-    && chmod -R g+rw,o+rw /home/dev
+    && chmod -R g+rw,o+rw,g+s,g+s /home/dev \
+    && setfacl -d -m group::rwx,other::rwx /home/dev
 
 ##############################################################################
 # ~ fin ~
