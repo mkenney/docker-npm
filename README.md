@@ -44,7 +44,7 @@ Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/)
 
 Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/).
 
-### Alpine
+### Debian
 
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
