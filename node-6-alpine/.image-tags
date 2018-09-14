@@ -2,5 +2,5 @@
 # deployments
 
 declare -a TAGS=(
-    'node-7-alpine'
+    'node-6-alpine'
 )
