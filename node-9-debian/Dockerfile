@@ -16,9 +16,12 @@ ENV TERM=xterm \
 
 RUN set -x \
     && apt-get -qq update \
-    && apt-get install -qqy apt-utils \
+    && apt-get install -qqy apt-transport-https apt-utils \
     && apt-get -qq upgrade \
     && apt-get -qq dist-upgrade \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get -qq update \
     && apt-get install -qqy \
         git \
         mercurial \
@@ -72,6 +75,7 @@ RUN set -x \
     && echo "export LC_ALL=$(echo $LC_ALL)"                    >> /root/.bash_profile \
     && echo "export TERM=xterm"                                >> /root/.bash_profile \
     && echo "export PATH=$(echo $PATH)"                        >> /root/.bash_profile \
+    && echo "source .bashrc"                                   >> /root/.bash_profile \
     # Add a dev user and configure
     && groupadd dev \
     && useradd dev -s /bin/bash -m -g dev \
