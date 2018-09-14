@@ -5,13 +5,27 @@ IMAGE_TAG=latest
 if [ "" != "$1" ]; then
     IMAGE_TAG=$1
 fi
+
+
+
+
+CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG"
 echo "###########################################################################"
 echo
-echo "docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF /home/dev/.config/"
-docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF /home/dev/.config/
+echo "ls -laF /home/dev/.config/"
+$CMD ls -laF /home/dev/.config/
 echo
-echo "docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF /home/dev/.config/configstore/"
-docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF /home/dev/.config/configstore/
+echo "ls -laF /home/dev/.config/configstore/"
+$CMD ls -laF /home/dev/.config/configstore/
+echo
+echo "cat /run-as-user"
+$CMD cat /run-as-user
+echo
+echo "cat /etc/group"
+$CMD cat /etc/group
+echo
+echo "whoami"
+$CMD whoami
 echo
 echo "###########################################################################"
 exit 1
