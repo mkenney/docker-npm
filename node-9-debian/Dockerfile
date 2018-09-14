@@ -75,7 +75,8 @@ RUN set -x \
     && echo "export LC_ALL=$(echo $LC_ALL)"                    >> /root/.bash_profile \
     && echo "export TERM=xterm"                                >> /root/.bash_profile \
     && echo "export PATH=$(echo $PATH)"                        >> /root/.bash_profile \
-    && echo "source .bashrc"                                   >> /root/.bash_profile \
+    && echo "cd /src"                                          >> /root/.bash_profile \
+    && echo "source \$HOME/.bashrc"                            >> /root/.bash_profile \
     # Add a dev user and configure
     && groupadd dev \
     && useradd dev -s /bin/bash -m -g dev \
