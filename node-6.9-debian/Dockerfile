@@ -39,12 +39,13 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
+        yarn \
     && npm upgrade --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh
+        yarn
 
 ##############################################################################
 # UTF-8 Locale, timezone
