@@ -44,19 +44,19 @@ Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/)
 
 ##### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
-This image is under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image should be considered under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/).
 
 ##### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
 
-This image is under development and may not be as stable as versioned images. This image is based on [`node:10-debian`](https://hub.docker.com/r/library/node/tags/10-debian/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image is based on [`node:10-debian`](https://hub.docker.com/r/library/node/tags/10-debian/).
 
 ##### [`node-9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-9-debian/Dockerfile)
 
-This image is under development and may not be as stable as versioned images. This image is based on [`node:9-debian`](https://hub.docker.com/r/library/node/tags/9-debian/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image is based on [`node:9-debian`](https://hub.docker.com/r/library/node/tags/9-debian/).
 
 ##### [`node-8-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile)
 
-This image is under development and may not be as stable as versioned images. This image is based on [`node:8-debian`](https://hub.docker.com/r/library/node/tags/8-debian/). Package versions are not pinned, instead the included `npm` executable is used to install current versions of the packages.
+This image is based on [`node:8-debian`](https://hub.docker.com/r/library/node/tags/8-debian/).
 
 ##### [`node-7-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-debian/Dockerfile)
 
