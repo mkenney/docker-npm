@@ -6,6 +6,13 @@ if [ "" != "$1" ]; then
     IMAGE_TAG=$1
 fi
 
+echo "docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF"
+docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG ls -laF
+exit 1
+
+
+
+
 CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /usr/local/bin/bower  --allow-root"
 
 cd $PROJECT_PATH/test/resources
