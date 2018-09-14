@@ -18,6 +18,8 @@ Please feel free to [create an issue](https://github.com/mkenney/docker-npm/issu
 
 Images are tagged according to the installed Node version and operating system. Package versions are not pinned, instead [`npm`](https://npmjs.org/) is executed to install current versions of each package. If stability issues aries, I will pin package versions in a `Dockerfile` for that Node/OS version and create a image tagged as `stable` based on it. Please [let me know](https://github.com/mkenney/docker-npm/issues) if you run into this situation.
 
+### Alpine
+
 #### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
 
 This image should be considered under development and may not be as stable as versioned images. This image is based on [node:alpine](https://hub.docker.com/_/node/).
@@ -41,6 +43,8 @@ Based on [`node:7-alpine`](https://hub.docker.com/r/library/node/tags/7-alpine/)
 #### [`node-6-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6-alpine/Dockerfile)
 
 Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/).
+
+### Alpine
 
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
