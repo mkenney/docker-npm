@@ -1,9 +1,11 @@
 FROM node:7-wheezy
 
-LABEL version="1.0.0" \
-      node="v7" \
-      os="Debian Wheezy" \
-      description="Node v7 Official running on Debian Wheezy"
+LABEL org.label-schema.schema-version = 1.0.0 \
+    org.label-schema.vendor = mkenney@webbedlam.com \
+    org.label-schema.vcs-url = https://github.com/mkenney/docker-npm \
+    org.label-schema.description = "This image provides node based build tools." \
+    org.label-schema.name = "NPM" \
+    org.label-schema.url = http://mkenney.github.io/docker-npm/
 
 ENV TERM=xterm \
     NLS_LANG=American_America.AL32UTF8 \
@@ -14,37 +16,35 @@ ENV TERM=xterm \
 
 RUN set -x \
     && apt-get -qq update \
-    && apt-get install -qqy apt-utils \
+    && apt-get install -qqy apt-transport-https apt-utils \
     && apt-get -qq upgrade \
     && apt-get -qq dist-upgrade \
+    && apt-get -qq update \
     && apt-get install -qqy \
+        acl \
         git \
         mercurial \
         rsync \
         subversion \
         sudo \
         wget \
-
     # Restore a borne-shell compatible default shell
     && rm /bin/sh \
     && ln -s /bin/bash /bin/sh
 
-
-    # install npm packages
+# install npm packages
 RUN set -x \
-    && rm -f /usr/local/bin/yarn \
     && npm install --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
     && npm upgrade --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh
 
 ##############################################################################
 # UTF-8 Locale, timezone
@@ -73,7 +73,8 @@ RUN set -x \
     && echo "export LC_ALL=$(echo $LC_ALL)"                    >> /root/.bash_profile \
     && echo "export TERM=xterm"                                >> /root/.bash_profile \
     && echo "export PATH=$(echo $PATH)"                        >> /root/.bash_profile \
-
+    && echo "cd /src"                                          >> /root/.bash_profile \
+    && echo "source \$HOME/.bashrc"                            >> /root/.bash_profile \
     # Add a dev user and configure
     && groupadd dev \
     && useradd dev -s /bin/bash -m -g dev \
@@ -81,7 +82,9 @@ RUN set -x \
     && echo "dev ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && rsync -a /root/ /home/dev/ \
     && chown -R dev:dev /home/dev/ \
-    && chmod 0777 /home/dev
+    && chmod 0777 /home/dev \
+    && chmod -R u+rwX,g+rwX,o+rwX /home/dev \
+    && setfacl -R -d -m user::rwx,group::rwx,other::rwx /home/dev
 
 ##############################################################################
 # ~ fin ~
@@ -90,7 +93,6 @@ RUN set -x \
 RUN set -x \
     && wget -O /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
     && chmod 0755 /run-as-user \
-
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
