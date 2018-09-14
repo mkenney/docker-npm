@@ -1,9 +1,11 @@
 FROM node:9-wheezy
 
-LABEL version="1.0.0" \
-      node="v8" \
-      os="Debian Wheezy" \
-      description="Node v8 Official running on Debian Wheezy"
+LABEL org.label-schema.schema-version = 1.0.0 \
+    org.label-schema.vendor = mkenney@webbedlam.com \
+    org.label-schema.vcs-url = https://github.com/mkenney/docker-npm \
+    org.label-schema.description = "This image provides node based build tools." \
+    org.label-schema.name = "NPM" \
+    org.label-schema.url = http://mkenney.github.io/docker-npm/
 
 ENV TERM=xterm \
     NLS_LANG=American_America.AL32UTF8 \
@@ -29,21 +31,19 @@ RUN set -x \
     && ln -s /bin/bash /bin/sh
 
 
-    # install npm packages
+# install npm packages
 RUN set -x \
-    && rm -f /usr/local/bin/yarn \
     && npm install --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
     && npm upgrade --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh
 
 ##############################################################################
 # UTF-8 Locale, timezone
