@@ -22,11 +22,13 @@ RUN set -x \
     && echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && apk update \
     && apk add \
+        acl \
         ca-certificates \
         curl \
         git \
         gnupg \
         mercurial \
+        rsync \
         shadow \
         subversion \
         sudo
@@ -39,11 +41,24 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
+    # Configure root account
+    && echo "export NLS_LANG=$(echo $NLS_LANG)"                >> /root/.profile \
+    && echo "export LANG=$(echo $LANG)"                        >> /root/.profile \
+    && echo "export LANGUAGE=$(echo $LANGUAGE)"                >> /root/.profile \
+    && echo "export LC_ALL=$(echo $LC_ALL)"                    >> /root/.profile \
+    && echo "export TERM=xterm"                                >> /root/.profile \
+    && echo "export PATH=$(echo $PATH)"                        >> /root/.profile \
+    && echo "cd /src"                                          >> /root/.profile \
     # Create a dev user to use as the directory owner
     && addgroup dev \
     && adduser -D -s /bin/sh -G dev dev \
     && echo "dev:password" | chpasswd \
     && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh \
+    && rsync -a /root/ /home/dev/ \
+    && chown -R dev:dev /home/dev/ \
+    && chmod 0777 /home/dev \
+    && chmod -R u+rwX,g+rwX,o+rwX /home/dev \
+    && setfacl -R -d -m user::rwx,group::rwx,other::rwx /home/dev \
     # Setup wrapper scripts
     && curl -o /run-as-user https://raw.githubusercontent.com/mkenney/docker-scripts/master/container/run-as-user \
     && chmod 0755 /run-as-user
@@ -59,6 +74,7 @@ RUN set -x \
         linux-headers \
         paxctl \
         python \
+        rsync \
         tar \
     && rm -rf \
         /var/cache/apk/* \
