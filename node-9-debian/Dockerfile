@@ -86,7 +86,7 @@ RUN set -x \
     && rsync -a /root/ /home/dev/ \
     && chown -R dev:dev /home/dev/ \
     && chmod 0777 /home/dev \
-    && chmod -R g+rw,o+rw,g+s,g+s /home/dev \
+    && chmod -R g+rw,o+rw,g+s,o+s /home/dev \
     && setfacl -d -m group::rwx,other::rwx /home/dev
 
 ##############################################################################
