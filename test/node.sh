@@ -8,11 +8,10 @@ fi
 
 CMD="docker run --rm -ti -v $PROJECT_PATH/test/resources:/src:rw mkenney/npm:$IMAGE_TAG /usr/local/bin/node"
 
-output=`$CMD --version`
+$CMD --version
 result=$?
 if [ 0 -ne $result ]; then
     echo "${PREFIX}command failed: '$CMD --version'"
-    echo "${PREFIX}${PREFIX}${output}"
 fi
 
 exit $result
