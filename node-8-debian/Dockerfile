@@ -35,9 +35,8 @@ RUN set -x \
     && ln -s /bin/bash /bin/sh
 
 
-    # install npm packages
+# install npm packages
 RUN set -x \
-    && rm -f /usr/local/bin/yarn \
     && npm install --silent --global \
         gulp-cli \
         grunt-cli \
