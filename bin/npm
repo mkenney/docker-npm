@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-TAG=node-8-alpine
+TAG=node-10-alpine
 if [ "" != "$DOCKER_NPM_TAG" ]; then
     TAG="$DOCKER_NPM_TAG"
 fi
