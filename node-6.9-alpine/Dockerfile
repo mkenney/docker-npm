@@ -87,8 +87,7 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
-        npx
+        yarn
 
 ##############################################################################
 # users

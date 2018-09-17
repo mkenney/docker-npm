@@ -41,6 +41,7 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
+        npx \
     # Configure root account
     && echo "export NLS_LANG=$(echo $NLS_LANG)"                >> /root/.profile \
     && echo "export LANG=$(echo $LANG)"                        >> /root/.profile \
