@@ -1,4 +1,4 @@
-FROM node:7.0-wheezy
+FROM node:9-wheezy
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
@@ -19,6 +19,8 @@ RUN set -x \
     && apt-get install -qqy apt-transport-https apt-utils \
     && apt-get -qq upgrade \
     && apt-get -qq dist-upgrade \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get -qq update \
     && apt-get install -qqy \
         acl \
@@ -32,6 +34,7 @@ RUN set -x \
     && rm /bin/sh \
     && ln -s /bin/bash /bin/sh
 
+
 # install npm packages
 RUN set -x \
     && npm install --silent --global \
@@ -39,15 +42,12 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
-        npx \
     && npm upgrade --silent --global \
         gulp-cli \
         grunt-cli \
         bower \
         markdown-styles \
-        yarn \
-        npx
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh
 
 ##############################################################################
 # UTF-8 Locale, timezone

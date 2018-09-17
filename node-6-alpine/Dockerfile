@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:6-alpine
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
@@ -18,6 +18,8 @@ ENV TERM=xterm \
 # Build tools
 ########################################################################
 RUN set -x \
+    && echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+    && echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
     && apk update \
     && apk add \
         acl \
@@ -39,7 +41,6 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-        npx \
     # Configure root account
     && echo "export NLS_LANG=$(echo $NLS_LANG)"                >> /root/.profile \
     && echo "export LANG=$(echo $LANG)"                        >> /root/.profile \

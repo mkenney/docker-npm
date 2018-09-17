@@ -8,6 +8,9 @@
         "type": "git",
         "url": "https://github.com/mkenney/docker-npm"
     },
+    "resolutions": {
+        "natives": "1.1.3"
+    },
     "dependencies": {
         "grunt": "*",
         "gulp": "*"
