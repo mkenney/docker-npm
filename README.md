@@ -22,7 +22,7 @@ Images are tagged according to the installed Node version and operating system. 
 
 #### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
 
-This image should be considered under development and may not be as stable as versioned images. This image is based on [node:alpine](https://hub.docker.com/_/node/).
+This image should be considered under development and may not be as stable as versioned images. Based on [node:alpine](https://hub.docker.com/_/node/).
 
 #### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
 
@@ -48,19 +48,19 @@ Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/)
 
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
-This image should be considered under development and may not be as stable as versioned images. This image is based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/).
+This image should be considered under development and may not be as stable as versioned images. Based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/).
 
 #### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
 
-This image is based on [`node:10-debian`](https://hub.docker.com/r/library/node/tags/10-debian/).
+Based on [`node:10-wheezy`](https://hub.docker.com/r/library/node/tags/10-wheezy/).
 
 #### [`node-9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-9-debian/Dockerfile)
 
-This image is based on [`node:9-debian`](https://hub.docker.com/r/library/node/tags/9-debian/).
+Based on [`node:9-wheezy`](https://hub.docker.com/r/library/node/tags/9-wheezy/).
 
 #### [`node-8-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile)
 
-This image is based on [`node:8-debian`](https://hub.docker.com/r/library/node/tags/8-debian/).
+Based on [`node:8-wheezy`](https://hub.docker.com/r/library/node/tags/8-wheezy/).
 
 #### [`node-7-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-7-debian/Dockerfile)
 
