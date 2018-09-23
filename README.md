@@ -22,7 +22,7 @@ Images are tagged according to the installed Node version and operating system. 
 
 #### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
 
-This image should be considered under development and may not be as stable as versioned images. Based on [node:alpine](https://hub.docker.com/_/node/).
+Based on [node:alpine](https://hub.docker.com/_/node/). This image should be considered under development and may not be as stable as versioned images.
 
 #### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
 
@@ -48,7 +48,7 @@ Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/)
 
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
-This image should be considered under development and may not be as stable as versioned images. Based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/).
+Based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). This image should be considered under development and may not be as stable as versioned images.
 
 #### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
 
