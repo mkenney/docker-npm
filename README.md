@@ -22,7 +22,7 @@ Images are tagged according to the installed Node version and operating system. 
 
 #### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
 
-Based on [node:alpine](https://hub.docker.com/_/node/). This image should be considered under development and may not be as stable as versioned images.
+Based on [`node:alpine`](https://hub.docker.com/_/node/). This image should be considered under development and may not be as stable as versioned images.
 
 #### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
 
@@ -90,9 +90,9 @@ Essentially, this is just a set of [shell scripts](https://github.com/mkenney/do
 
 #### Images & Wrapper Scripts
 
-The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the current stable `node` and `npm` binaries for [`debian:wheezy`](https://hub.docker.com/_/debia:node:3.4`](https://hub.docker.com/_/node](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is writtennode:8.12-alpineirectory owner/group instead of roo random user.
+The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the latest stable `bower`, `generate-md`, `grunt`, `gulp`, `node`, `npm`, and `yarn`, binaries for [`node`](https://hub.docker.com/_/node/). When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
 
-https://hub.docker.com/r/library/node/tags/8.12-alpine/m `gid` to execute as:
+The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container) script has three methods of determining which `uid` and `gid` to execute as:
 
 * By default, it will execute with a `uid` and `gid` that matches the current directory (the one that gets mounted into `/src`).
 * In order to take advantage of public key authentication when installing packages from private repositories, all the wrapper scripts will attempt to mount your `~/.ssh` directory into the container. When that is successful, the script will run as the `uid` and `gid` of the owner of `~/.ssh` (you).
@@ -115,7 +115,7 @@ https://hub.docker.com/r/library/node/tags/8.12-alpine/m `gid` to execute as:
 
 * You can also explicitly specify the `uid` and `gid` to use at runtime by defining the `PUID` and `PGID` environment variables when executing the container, this is quite useful in automated build systems:
 
-  ```txt
+  ```bash
   docker run \
       --rm \
       -it \
