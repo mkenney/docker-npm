@@ -115,7 +115,7 @@ The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/mast
 
 * You can also explicitly specify the `uid` and `gid` to use at runtime by defining the `PUID` and `PGID` environment variables when executing the container, this is quite useful in automated build systems:
 
-  ```bash
+  ```txt
   docker run \
       --rm \
       -it \
