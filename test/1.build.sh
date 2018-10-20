@@ -47,14 +47,22 @@ for dockerfile in $(list_changes Dockerfile); do
             failed_tests="$failed_tests npm";
         fi;
 
-        echo "    ...npx"
-        sh ./npx.sh ci-build
-        result=$?
-        echo $output
-        if [ 0 -ne $result ]; then
-            build_result=1
-            failed_tests="$failed_tests npx";
-        fi;
+        if \
+            [ "node-6-alpine/Dockerfile" != "$dockerfile" ] \
+            && [ "node-6.9-alpine/Dockerfile" != "$dockerfile" ] \
+            && [ "node-6.9-debian/Dockerfile" != "$dockerfile" ] \
+            && [ "node-7.0-debian/Dockerfile" != "$dockerfile" ] \
+            && [ "node-7.7-alpine/Dockerfile" != "$dockerfile" ] \
+        then;
+            echo "    ...npx"
+            sh ./npx.sh ci-build
+            result=$?
+            echo $output
+            if [ 0 -ne $result ]; then
+                build_result=1
+                failed_tests="$failed_tests npx";
+            fi;
+        fi
 
         echo "    ...yarn"
         sh ./yarn.sh ci-build
