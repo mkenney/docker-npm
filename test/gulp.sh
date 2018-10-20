@@ -14,6 +14,12 @@ rm -rf node_modules
 rm -f package.lock
 $YARN install
 
+result=$?
+if [ 0 -ne $result ]; then
+    echo "${PREFIX}command failed: '$YARN install'"
+    exit $result
+fi
+
 $CMD
 result=$?
 if [ 0 -ne $result ]; then
