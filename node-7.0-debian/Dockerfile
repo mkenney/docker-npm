@@ -39,6 +39,12 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
+        yarn \
+    && npm install --silent --global \
+        gulp-cli \
+        grunt-cli \
+        bower \
+        markdown-styles \
         yarn
 
 ##############################################################################

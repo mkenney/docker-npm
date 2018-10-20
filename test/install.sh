@@ -66,6 +66,7 @@ test_install grunt       $INSTALL_PATH; result=$?; if [ "0" != "$result" ]; then
 test_install gulp        $INSTALL_PATH; result=$?; if [ "0" != "$result" ]; then error_count=$error_count+1; fi
 test_install node        $INSTALL_PATH; result=$?; if [ "0" != "$result" ]; then error_count=$error_count+1; fi
 test_install npm         $INSTALL_PATH; result=$?; if [ "0" != "$result" ]; then error_count=$error_count+1; fi
+test_install npx         $INSTALL_PATH; result=$?; if [ "0" != "$result" ]; then error_count=$error_count+1; fi
 test_install yarn        $INSTALL_PATH; result=$?; if [ "0" != "$result" ]; then error_count=$error_count+1; fi
 
 echo

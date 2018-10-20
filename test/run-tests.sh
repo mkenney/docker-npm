@@ -50,6 +50,7 @@ echo "
   gulp --version:        $($PROJECT_PATH/bin/gulp --version)
   node --version:        $($PROJECT_PATH/bin/node --version)
   npm --version:         $($PROJECT_PATH/bin/npm --version)
+  npx --version:         $($PROJECT_PATH/bin/npx --version)
   yarn --version:        $($PROJECT_PATH/bin/yarn --version)
 "
 

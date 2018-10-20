@@ -4,3 +4,4 @@ test/resources/html
 test/bin
 test/**/*.lock
 test/**/package-lock.json
+wiki/
