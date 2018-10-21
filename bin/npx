@@ -4,7 +4,7 @@ TAG=node-10-alpine
 if [ "" != "$DOCKER_NPM_TAG" ]; then
     TAG="$DOCKER_NPM_TAG"
 fi
-SCRIPT=yarn
+SCRIPT=npx
 INSTALL_SCRIPT=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
 
 if [ "self-update" = "$1" ]; then
@@ -17,7 +17,8 @@ else
         term_type=i
     fi
     docker run \
-        --rm -$term_type \
+        --rm \
+        -$term_type \
         -v $(pwd):/src:rw \
         -v $HOME/.ssh:/home/dev/.ssh:ro \
         -v $HOME/.npm:/home/dev/.npm:rw \

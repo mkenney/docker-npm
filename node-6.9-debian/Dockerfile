@@ -40,7 +40,7 @@ RUN set -x \
         bower \
         markdown-styles \
         yarn \
-    && npm upgrade --silent --global \
+    && npm install --silent --global \
         gulp-cli \
         grunt-cli \
         bower \

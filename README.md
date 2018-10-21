@@ -90,7 +90,7 @@ Essentially, this is just a set of [shell scripts](https://github.com/mkenney/do
 
 #### Images & Wrapper Scripts
 
-The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the latest stable `bower`, `generate-md`, `grunt`, `gulp`, `node`, `npm`, and `yarn`, binaries for [`node`](https://hub.docker.com/_/node/). When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
+The [images](https://hub.docker.com/r/mkenney/npm/tags/) contain the latest stable `bower`, `generate-md`, `grunt`, `gulp`, `node`, `npm`, `npx`, and `yarn`, binaries for [`node`](https://hub.docker.com/_/node/). When using the [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) available in the [source repository](https://github.com/mkenney/docker-npm), the current directory is mounted into `/src` inside the container and a [wrapper script](https://github.com/mkenney/docker-scripts/blob/master/container/run-as-user) executes the specified command as a user who's `uid` and `gid` matches those properties on that directory. This way any output is written as the directory owner/group instead of root or a random user.
 
 The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container) script has three methods of determining which `uid` and `gid` to execute as:
 
@@ -125,7 +125,7 @@ The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/mast
       mkenney/npm:latest <commands>
   ```
 
-The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-8-alpine` at the moment).
+The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-10-alpine` at the moment).
 
 To specify a different image, you can define the image tag in your environment which will set a new default (you probably want to define this in your `.bashrc` or similar profile script):
 ```txt
@@ -151,6 +151,7 @@ Wrapper scripts for several commands are available in the source repository:
 * [`gulp`](https://github.com/mkenney/docker-npm/blob/master/bin/gulp)
 * [`node`](https://github.com/mkenney/docker-npm/blob/master/bin/node)
 * [`npm`](https://github.com/mkenney/docker-npm/blob/master/bin/npm)
+* [`npx`](https://github.com/mkenney/docker-npm/blob/master/bin/npx)
 * [`yarn`](https://github.com/mkenney/docker-npm/blob/master/bin/yarn)
 
 Installation is just a matter of putting them somewhere in your path and making them executable. An [installation script](https://github.com/mkenney/docker-npm/blob/master/bin/install.sh) is available and can be executed with a shell `curl`+`sh -s` command. Simply pass in your command arguments normally.
@@ -168,8 +169,8 @@ Options
   PREFIX   - Optional, the location to install the command script. Default '$HOME/bin'
 
 Examples
-  $ curl -L https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh | bash -s gulp node-8-alpine $HOME/bin
-  $ bash ./install.sh gulp node-8-alpine $HOME/bin
+  $ curl -L https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh | bash -s gulp node-10-alpine $HOME/bin
+  $ bash ./install.sh gulp node-10-alpine $HOME/bin
 ```
 
 ##### Updating

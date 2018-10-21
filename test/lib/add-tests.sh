@@ -8,13 +8,13 @@ add_tests() {
     echo "  Adding '$1' test suite..."
     case $1 in
         release)
-            tests="1.build;install;bower;md;grunt;gulp;node;npm;yarn"
+            tests="1.build;install;bower;md;grunt;gulp;node;npm;npx;yarn"
             ;;
         node-alpine/*|node-debian/*|node-10-alpine/*|node-10-debian/*|node-9-alpine/*|node-9-debian/*|node-8-alpine/*|node-8-debian/*|node-7-alpine/*|node-7-debian/*|node-7.7-alpine/*|node-7.0-debian/*|node-6.9-alpine/*|node-6.9-debian/*|node-6-alpine/*|node-6-debian/*)
             tests="1.build"
             ;;
         .travis.yml)
-            tests="install;bower;md;grunt;gulp;node;npm;yarn"
+            tests="install;bower;md;grunt;gulp;node;npm;npx;yarn"
             ;;
         bin/bower|test/resources/bower.json)
             tests="bower"
@@ -36,6 +36,9 @@ add_tests() {
             ;;
         bin/npm)
             tests="npm"
+            ;;
+        bin/npx)
+            tests="npx"
             ;;
         bin/yarn)
             tests="yarn"

@@ -39,11 +39,7 @@ RUN set -x \
         grunt-cli \
         bower \
         markdown-styles \
-    && npm upgrade --silent --global \
-        gulp-cli \
-        grunt-cli \
-        bower \
-        markdown-styles \
+        npx \
     && curl --compressed -o- -L https://yarnpkg.com/install.sh | sh
 
 ##############################################################################

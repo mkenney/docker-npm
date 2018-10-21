@@ -4,6 +4,7 @@ source $PROJECT_PATH/test/lib/list-changes.sh
 
 PREFIX="        "
 failed_tests=
+build_tag=ci-build
 
 for dockerfile in $(list_changes Dockerfile); do
     if [ -f $PROJECT_PATH/$dockerfile ]; then
@@ -12,7 +13,7 @@ for dockerfile in $(list_changes Dockerfile); do
 
         echo "    ...build"
         cd $PROJECT_PATH/$(dirname $dockerfile)
-        docker build -t mkenney/npm:ci-build .
+        docker build -t mkenney/npm:$build_tag .
         result=$?
         if [ 0 -ne $result ]; then
             echo "${PREFIX}$dockerfile build failed"
@@ -21,7 +22,7 @@ for dockerfile in $(list_changes Dockerfile); do
         cd $PROJECT_PATH/test
 
         echo "    ...node"
-        sh ./node.sh ci-build
+        sh ./node.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -30,7 +31,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...bower"
-        sh ./bower.sh ci-build
+        sh ./bower.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -39,7 +40,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...npm"
-        sh ./npm.sh ci-build
+        sh ./npm.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -47,8 +48,24 @@ for dockerfile in $(list_changes Dockerfile); do
             failed_tests="$failed_tests npm";
         fi;
 
+        if \
+            [ "node-6.9-alpine/Dockerfile" != "$dockerfile" ] \
+            && [ "node-6.9-debian/Dockerfile" != "$dockerfile" ] \
+            && [ "node-7.0-debian/Dockerfile" != "$dockerfile" ] \
+            && [ "node-7.7-alpine/Dockerfile" != "$dockerfile" ] \
+        ; then
+            echo "    ...npx"
+            sh ./npx.sh $build_tag
+            result=$?
+            echo $output
+            if [ 0 -ne $result ]; then
+                build_result=1
+                failed_tests="$failed_tests npx"
+            fi
+        fi
+
         echo "    ...yarn"
-        sh ./yarn.sh ci-build
+        sh ./yarn.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -57,7 +74,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...grunt"
-        sh ./grunt.sh ci-build
+        sh ./grunt.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -66,7 +83,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...gulp"
-        sh ./gulp.sh ci-build
+        sh ./gulp.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then
@@ -75,7 +92,7 @@ for dockerfile in $(list_changes Dockerfile); do
         fi;
 
         echo "    ...markdown-styles"
-        sh ./md.sh ci-build
+        sh ./md.sh $build_tag
         result=$?
         echo $output
         if [ 0 -ne $result ]; then

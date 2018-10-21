@@ -16,5 +16,12 @@ else
     else
         term_type=i
     fi
-    docker run --rm -$term_type -v $(pwd):/src:rw -v $HOME/.ssh:/home/dev/.ssh:ro mkenney/npm:$TAG /usr/local/bin/$SCRIPT $@
+    docker run \
+        --rm \
+        -$term_type \
+        -v $(pwd):/src:rw \
+        -v $HOME/.ssh:/home/dev/.ssh:ro \
+        -v $HOME/.npm:/home/dev/.npm:rw \
+        $DOCKER_NPM_ARGS \
+        mkenney/npm:$TAG /usr/local/bin/$SCRIPT $@
 fi
