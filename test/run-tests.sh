@@ -40,7 +40,7 @@ if [ "true" == "$TRAVIS" ]; then
     fi
 fi
 
-execute_tests $verbose
+execute_tests
 exit_code=$TEST_EXIT_CODE
 
 echo "
