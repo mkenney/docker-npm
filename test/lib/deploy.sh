@@ -19,7 +19,7 @@ function deploy() {
                 "https://registry.hub.docker.com/u/mkenney/npm/trigger/$DOCKER_TOKEN/"
 
             # Because Docker Hub throttles API calls a bit heavily
-            sleep 30
+            sleep 45
         done
     fi
 }
