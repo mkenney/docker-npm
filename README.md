@@ -1,6 +1,6 @@
 [![docker-badges.webbedlam.com](http://docker-badges.webbedlam.com/image/mkenney/npm)](https://hub.docker.com/r/mkenney/npm/)
 
-# npm
+# npm and related build and dev tools
 
 [![MIT License](https://img.shields.io/github/license/mkenney/k8s-proxy.svg)](https://github.com/mkenney/docker-npm/blob/master/LICENSE) [![stability-mature](https://img.shields.io/badge/stability-mature-008000.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#mature) [![Build status](https://travis-ci.org/mkenney/docker-npm.svg?branch=master)](https://travis-ci.org/mkenney/docker-npm) [![Github issues](https://img.shields.io/github/issues-raw/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/issues) [![Github pull requests](https://img.shields.io/github/issues-pr/mkenney/docker-npm.svg)](https://github.com/mkenney/docker-npm/pulls)
 
