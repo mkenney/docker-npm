@@ -14,7 +14,7 @@ Please feel free to [create an issue](https://github.com/mkenney/docker-npm/issu
 - [Installation](#installation)
 - [Change log](#change-log)
 
-### Tagged Images
+## Tagged Images
 
 Images are tagged according to the installed Node version and operating system. Package versions are not pinned, instead [`npm`](https://npmjs.org/) is executed to install current versions of each package. If stability issues aries, I will pin package versions in a `Dockerfile` for that Node/OS version and create a image tagged as `stable` based on it. Please [let me know](https://github.com/mkenney/docker-npm/issues) if you run into this situation.
 
@@ -84,7 +84,18 @@ Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
 
 [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
 
-### About
+## Announcements
+
+### 2018-10-21
+
+* Added `npx` [thanks to @dagomar](#142)
+* Added mounting `$HOME/.npm` to the wrapper scripts to allow various tools to take advantage of the cache [thanks to @jgoux](#167)
+* [Added a variable](https://github.com/mkenney/docker-npm/issues/167#issuecomment-430861154) for passing flags to the `docker` command [thanks to @jgoux](#167):
+  ```
+  DOCKER_NPM_ARGS="-p 3000:3000" yarn start
+  ```
+
+## About
 
 Essentially, this is just a set of [shell scripts](https://github.com/mkenney/docker-npm/tree/master/bin) that manage a [Node.js](https://nodejs.org/) docker image. The docker image includes a script ([`run-as-user`](https://github.com/mkenney/docker-scripts/tree/master/container)) that allows commands to write files as either the current user or the owner/group of the current directory, which the shell scripts take advantage of to make sure files are created with your preferred permissions rather than root.
 
