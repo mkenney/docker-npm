@@ -24,6 +24,10 @@ Images are tagged according to the installed Node version and operating system. 
 
 Based on [`node:alpine`](https://hub.docker.com/_/node/). This image should be considered under development and may not be as stable as versioned images.
 
+#### [`node-11-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-11-alpine/Dockerfile)
+
+Based on [`node:11-alpine`](https://hub.docker.com/r/library/node/tags/11-alpine/).
+
 #### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
 
 Based on [`node:10-alpine`](https://hub.docker.com/r/library/node/tags/10-alpine/).
@@ -49,6 +53,10 @@ Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/)
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
 Based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). This image should be considered under development and may not be as stable as versioned images.
+
+#### [`node-11-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-11-debian/Dockerfile)
+
+Based on [`node:11-stretch`](https://hub.docker.com/r/library/node/tags/11-stretch/).
 
 #### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
 
