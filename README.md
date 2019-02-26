@@ -14,6 +14,15 @@ Please feel free to [create an issue](https://github.com/mkenney/docker-npm/issu
 - [Installation](#installation)
 - [Change log](#change-log)
 
+## Announcements
+
+### v1.1.0 released
+
+2019-02-25
+
+* Added `node` v11 images and tests
+* Updated the shell scripts to default to `node-11-alpine` image (you can always use the `DOCKER_NPM_TAG` variable to use another image).
+
 ## Tagged Images
 
 Images are tagged according to the installed Node version and operating system. Package versions are not pinned, instead [`npm`](https://npmjs.org/) is executed to install current versions of each package. If stability issues aries, I will pin package versions in a `Dockerfile` for that Node/OS version and create a image tagged as `stable` based on it. Please [let me know](https://github.com/mkenney/docker-npm/issues) if you run into this situation.
@@ -23,6 +32,10 @@ Images are tagged according to the installed Node version and operating system. 
 #### [`alpine`, `latest` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/alpine/Dockerfile)
 
 Based on [`node:alpine`](https://hub.docker.com/_/node/). This image should be considered under development and may not be as stable as versioned images.
+
+#### [`node-11-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-11-alpine/Dockerfile)
+
+Based on [`node:11-alpine`](https://hub.docker.com/r/library/node/tags/11-alpine/).
 
 #### [`node-10-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-alpine/Dockerfile)
 
@@ -49,6 +62,10 @@ Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/)
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
 Based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). This image should be considered under development and may not be as stable as versioned images.
+
+#### [`node-11-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-11-debian/Dockerfile)
+
+Based on [`node:11-stretch`](https://hub.docker.com/r/library/node/tags/11-stretch/).
 
 #### [`node-10-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-10-debian/Dockerfile)
 
@@ -83,17 +100,6 @@ Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
 #### [`node-6.9-debian`, `6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-debian/Dockerfile)
 
 [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
-
-## Announcements
-
-### 2018-10-21
-
-* Added `npx` [thanks to @dagomar](#142)
-* Added mounting `$HOME/.npm` to the wrapper scripts to allow various tools to take advantage of the cache [thanks to @jgoux](#167)
-* [Added a variable](https://github.com/mkenney/docker-npm/issues/167#issuecomment-430861154) for passing flags to the `docker` command [thanks to @jgoux](#167):
-  ```
-  DOCKER_NPM_ARGS="-p 3000:3000" yarn start
-  ```
 
 ## About
 
