@@ -94,14 +94,10 @@ Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
 
 ## Announcements
 
-### 2018-10-21
+### 2019-02-25
 
-* Added `npx` [thanks to @dagomar](#142)
-* Added mounting `$HOME/.npm` to the wrapper scripts to allow various tools to take advantage of the cache [thanks to @jgoux](#167)
-* [Added a variable](https://github.com/mkenney/docker-npm/issues/167#issuecomment-430861154) for passing flags to the `docker` command [thanks to @jgoux](#167):
-  ```
-  DOCKER_NPM_ARGS="-p 3000:3000" yarn start
-  ```
+* Added `node` v11 images and tests
+* Updated the shell scripts to default to `node-11-alpine` image (you can always use the `DOCKER_NPM_TAG` variable to use another image).
 
 ## About
 
