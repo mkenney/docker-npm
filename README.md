@@ -14,6 +14,15 @@ Please feel free to [create an issue](https://github.com/mkenney/docker-npm/issu
 - [Installation](#installation)
 - [Change log](#change-log)
 
+## Announcements
+
+### v1.1.0 released
+
+2019-02-25
+
+* Added `node` v11 images and tests
+* Updated the shell scripts to default to `node-11-alpine` image (you can always use the `DOCKER_NPM_TAG` variable to use another image).
+
 ## Tagged Images
 
 Images are tagged according to the installed Node version and operating system. Package versions are not pinned, instead [`npm`](https://npmjs.org/) is executed to install current versions of each package. If stability issues aries, I will pin package versions in a `Dockerfile` for that Node/OS version and create a image tagged as `stable` based on it. Please [let me know](https://github.com/mkenney/docker-npm/issues) if you run into this situation.
@@ -91,13 +100,6 @@ Based on[`node:7-wheezy`](https://hub.docker.com/r/library/node/tags/7-wheezy/).
 #### [`node-6.9-debian`, `6.9-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-6.9-debian/Dockerfile)
 
 [![stability-locked](https://img.shields.io/badge/stability-locked-4b0088.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#locked) Based on[`node:6.9-wheezy`](https://hub.docker.com/r/library/node/tags/6.9-wheezy/).
-
-## Announcements
-
-### 2019-02-25
-
-* Added `node` v11 images and tests
-* Updated the shell scripts to default to `node-11-alpine` image (you can always use the `DOCKER_NPM_TAG` variable to use another image).
 
 ## About
 
