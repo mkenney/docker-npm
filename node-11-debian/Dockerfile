@@ -1,4 +1,4 @@
-FROM node:11-wheezy
+FROM node:11-stretch
 
 LABEL org.label-schema.schema-version = 1.0.0 \
     org.label-schema.vendor = mkenney@webbedlam.com \
