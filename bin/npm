@@ -1,14 +1,23 @@
 #!/usr/bin/env sh
 
+CONFIG_FILE=".docker-npm"
+if [ -f "$CONFIG_FILE" ]; then
+    . "./$CONFIG_FILE"
+fi
+
+DEFAULT_IMAGE_NAME=mkenney/npm
+IMAGE_NAME=${DOCKER_NPM_IMAGE_NAME-$DEFAULT_IMAGE_NAME}
+
 TAG=node-11-alpine
 if [ "" != "$DOCKER_NPM_TAG" ]; then
     TAG="$DOCKER_NPM_TAG"
 fi
+
 SCRIPT=npm
 INSTALL_SCRIPT=https://raw.githubusercontent.com/mkenney/docker-npm/master/bin/install.sh
 
 if [ "self-update" = "$1" ]; then
-    docker pull mkenney/npm:$TAG
+    docker pull $IMAGE_NAME:$TAG
     curl -f -L -s $INSTALL_SCRIPT | sh -s $SCRIPT $TAG $(dirname $0)
 else
     if [ -t 0 ]; then
@@ -23,5 +32,5 @@ else
         -v $HOME/.ssh:/home/dev/.ssh:ro \
         -v $HOME/.npm:/home/dev/.npm:rw \
         $DOCKER_NPM_ARGS \
-        mkenney/npm:$TAG /usr/local/bin/$SCRIPT $@
+        $IMAGE_NAME:$TAG /usr/local/bin/$SCRIPT $@
 fi
