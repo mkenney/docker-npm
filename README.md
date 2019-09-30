@@ -33,6 +33,10 @@ Images are tagged according to the installed Node version and operating system. 
 
 Based on [`node:alpine`](https://hub.docker.com/_/node/). This image should be considered under development and may not be as stable as versioned images.
 
+#### [`node-12-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-12-alpine/Dockerfile)
+
+Based on [`node:12-alpine`](https://hub.docker.com/r/library/node/tags/12-alpine/).
+
 #### [`node-11-alpine` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-11-alpine/Dockerfile)
 
 Based on [`node:11-alpine`](https://hub.docker.com/r/library/node/tags/11-alpine/).
@@ -62,6 +66,10 @@ Based on [`node:6-alpine`](https://hub.docker.com/r/library/node/tags/6-alpine/)
 #### [`debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/debian/Dockerfile)
 
 Based on [`node:latest`](https://hub.docker.com/r/library/node/tags/latest/). This image should be considered under development and may not be as stable as versioned images.
+
+#### [`node-12-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-12-debian/Dockerfile)
+
+Based on [`node:12-stretch`](https://hub.docker.com/r/library/node/tags/12-stretch/).
 
 #### [`node-11-debian` Dockerfile](https://github.com/mkenney/docker-npm/blob/master/node-11-debian/Dockerfile)
 
@@ -142,7 +150,7 @@ The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/mast
       mkenney/npm:latest <commands>
   ```
 
-The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-10-alpine` at the moment).
+The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-12-alpine` at the moment).
 
 To specify a different image, you can define the image tag in your environment which will set a new default (you probably want to define this in your `.bashrc` or similar profile script):
 ```txt
