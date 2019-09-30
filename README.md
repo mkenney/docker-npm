@@ -142,7 +142,7 @@ The included [`run-as-user`](https://github.com/mkenney/docker-scripts/tree/mast
       mkenney/npm:latest <commands>
   ```
 
-The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-10-alpine` at the moment).
+The included [wrapper scripts](https://github.com/mkenney/docker-npm/blob/master/bin) default to the latest node version and image tag I feel is stable, I will update the default tag as updates are released or stability issues warrant (`node-11-alpine` at the moment).
 
 To specify a different image, you can define the image tag in your environment which will set a new default (you probably want to define this in your `.bashrc` or similar profile script):
 ```txt
