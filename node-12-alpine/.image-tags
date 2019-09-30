@@ -1,0 +1,6 @@
+# This file is used to define which image tags are triggered for build in CI
+# deployments
+
+declare -a TAGS=(
+    'node-12-alpine'
+)
